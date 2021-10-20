@@ -1,24 +1,32 @@
 <launch>
-  <!--param name="/use_sim_time" value="true" /-->
-  
-  <param  name="robot_description"
-    textfile="$(find languageslam)/urdf/linorobot.urdf" />
+  <param name="/use_sim_time" value="true" />
 
-  <node  name="robot_state_publisher" pkg="robot_state_publisher"
-    type="robot_state_publisher" />
-  
-  <node  name="cartographer_grpc_node" pkg="cartographer_ros"
-  
+  <group>
+    <env name="ROS_MASTER_URI" value="http://localhost:11311" /><!--only needed for running this all on the same machine-->
+    <node name="playbag_1" pkg="rosbag" type="play"
+      args="--clock $(env HOME)/Downloads/ROSbags/1210bag3.bag" />
+
+
+
+    <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
           -server_address localhost:50051
-          -client_id CLIENT_ID
+          -client_id 1
           "
+          
       output="screen">
-      <!--remap from="/scan" to="/1/scan"/-->
-  </node>
+      <remap from="/scan" to="scan"/>
+    </node>
 
-  
+
+    <node name="cartographer_grpc_server_1" pkg="cartographer_ros"
+        type="cartographer_grpc_server.sh" args="
+            -configuration_directory $(find languageslam)/config
+            -configuration_basename robot_1_server.lua
+            ">
+    </node>
+
+  </group>
 </launch>
-
