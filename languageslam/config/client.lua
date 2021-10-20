@@ -9,7 +9,7 @@ options = {
   published_frame = "base_link",
   odom_frame = "odom",
   provide_odom_frame = true,
-  publish_frame_projected_to_2d = false,
+  publish_frame_projected_to_2d = true,
   use_pose_extrapolator = true,
   use_odometry = false,
   use_nav_sat = false,
@@ -35,6 +35,7 @@ TRAJECTORY_BUILDER_2D.submaps.num_range_data = 35
 TRAJECTORY_BUILDER_2D.min_range = 0.3
 TRAJECTORY_BUILDER_2D.max_range = 8.
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 1.
+
 TRAJECTORY_BUILDER_2D.use_imu_data = false
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.linear_search_window = 0.1
