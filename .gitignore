@@ -49,3 +49,16 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+
+# vscode ignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
