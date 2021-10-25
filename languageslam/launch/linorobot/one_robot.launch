@@ -9,7 +9,9 @@
     </node>
 
     <!-- IMU Relay and Filter -->
-    <include file="$(find languageslam)/launch/imu.launch" />
+    <include file="$(find languageslam)/launch/imu.launch" >
+        <arg name="robot_name"  value="$(arg robot_name)" />
+    </include>
 
     <!-- Publish Linorobot odometry -->
     <node pkg="linorobot" name="lino_base_node" type="lino_base_node"></node>
@@ -22,4 +24,7 @@
         <remap from="odometry/filtered" to="odom" />
         <rosparam command="load" file="$(find linorobot)/param/ekf/robot_localization.yaml" />
     </node>
+
+    <!-- Run Linorobot compatible laser drivers -->
+    <include file="$(find linorobot)/launch/include/laser.launch" />
 </launch>
