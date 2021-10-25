@@ -2,7 +2,7 @@
 <launch>
     <arg name="robot_name"/>
     <!-- Run Linorobot compatible laser drivers. Takes reference from env var LINOLIDAR. ie. export LINOLIDAR=xv11 -->
-    <include file="$(find languageslam)/launch/$(env LINOLIDAR).launch">
+    <include file="$(find languageslam)/launch/linorobot/$(env LINOLIDAR).launch">
             <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
 
