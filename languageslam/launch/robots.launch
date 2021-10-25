@@ -2,16 +2,20 @@
   
   <launch>
     <group ns="robot1">
-        <param name="tf_prefix" value="robot1_tf" />
+        <arg name="robot_name"  value="robot1" />
+        <param name="tf_prefix" value="$(arg robot1)" />
+
         <include file="$(find languageslam)/launch/one_robot.launch" >
-            <arg name="robot_name"  value="Robot1" />
+            <arg name="robot_name"  value="$(arg robot_name)" />
         </include>
     </group>
 
-    <!-- <group ns="robot2">
-        <param name="tf_prefix" value="robot2_tf" />
-        <include file="$(languageslam)/launch/one_robot.launch" >
-            <arg name="robot_name"  value="Robot2" />
+    <!--<group ns="robot1">
+        <arg name="robot_name"  value="robot1" />
+        <param name="tf_prefix" value="$(arg robot1)" />
+        
+        <include file="$(find languageslam)/launch/one_robot.launch" >
+            <arg name="robot_name"  value="$(arg robot_name)" />
         </include>
     </group> -->
   </launch>
