@@ -6,6 +6,5 @@
         <param name="frame_id" type="string" value="$(arg robot_name)/laser"/>
         <param name="inverted" type="bool" value="false"/>
         <param name="angle_compensate" type="bool" value="true"/>
-        <remap from="scan" to="$(arg robot_name)/scan"/>
     </node>
 </launch>
