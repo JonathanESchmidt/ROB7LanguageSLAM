@@ -6,6 +6,8 @@
     <node pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
         <param name="port" value="/dev/ttyACM0" />
         <param name="baud" value="57600" />
+        <remap from="imu/data_raw" to="$(arg robot_name)/imu/data_raw"/>
+        <remap from="imu/mag" to="$(arg robot_name)/imu/mag"/>
     </node>
 
     <!-- IMU Relay and Filter -->
@@ -33,7 +35,6 @@
     <!-- Run linorobot default lidar filter chain -->
 
     <include file="$(find languageslam)/launch/linorobot/laser_conf_l.launch" >
-
         <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
 </launch>
