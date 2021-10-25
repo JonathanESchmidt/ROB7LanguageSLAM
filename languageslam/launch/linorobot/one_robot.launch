@@ -26,19 +26,14 @@
     </node>
 
     <!-- Run Linorobot compatible laser drivers -->
-<<<<<<< HEAD
+
     <include file="$(find linorobot)/launch/linorobot/laser.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
     <!-- Run linorobot default lidar filter chain -->
+
     <include file="$(find linorobot)/launch/linorobot/laser_conf_l.launch" >
-=======
-    <include file="$(find linorobot)/launch/include/linorobot/laser.launch" >
-        <arg name="robot_name"  value="$(arg robot_name)" />
-    </include>
-    <!-- Run linorobot default lidar filter chain -->
-    <include file="$(find linorobot)/launch/include/linorobot/laser_conf_l.launch" >
->>>>>>> namespacing
+    
         <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
 </launch>
