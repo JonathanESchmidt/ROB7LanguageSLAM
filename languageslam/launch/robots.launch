@@ -3,7 +3,7 @@
   <launch>
     <group ns="robot1">
         <param name="tf_prefix" value="robot1_tf" />
-        <include file="$(find your_pkg)/launch/one_robot.launch" >
+        <include file="$(find languageslam)/launch/one_robot.launch" >
             <arg name="robot_name"  value="Robot1" />
         </include>
     </group>
