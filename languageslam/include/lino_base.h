@@ -33,6 +33,7 @@ private:
     float x_pos_;
     float y_pos_;
     float heading_;
+    std::string ns;
 };
 
 #endif
