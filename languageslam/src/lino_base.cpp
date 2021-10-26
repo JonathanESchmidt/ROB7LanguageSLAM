@@ -9,7 +9,7 @@ LinoBase::LinoBase():
     vel_dt_(0),
     x_pos_(0),
     y_pos_(0),
-    heading_(0)
+    heading_(0),
     ns=ros::this_node::getNamespace();
 
 {
