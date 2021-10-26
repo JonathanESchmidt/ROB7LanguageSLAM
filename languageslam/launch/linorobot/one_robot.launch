@@ -6,8 +6,7 @@
     <node pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
         <param name="port" value="/dev/ttyACM0" />
         <param name="baud" value="57600" />
-        <remap from="imu/data_raw" to="$(arg robot_name)/imu/data_raw"/>
-        <remap from="imu/mag" to="$(arg robot_name)/imu/mag"/>
+        
     </node>
 
     <!-- IMU Relay and Filter -->
@@ -16,7 +15,9 @@
     </include>
 
     <!-- Publish Linorobot odometry -->
-    <node pkg="linorobot" name="lino_base_node" type="lino_base_node"></node>
+    <node pkg="languageslam" name="lino_base_node" type="lino_base_node" >
+        <arg name="robot_name_test"  value="$(arg robot_name)" />
+    </node>
 
     <!-- Publish static transform from base_footprint to base_link -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.098 0 0 0  $(arg robot_name)/base_footprint $(arg robot_name)/base_link"/>
