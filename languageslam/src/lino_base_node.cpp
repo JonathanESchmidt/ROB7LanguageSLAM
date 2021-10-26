@@ -7,7 +7,7 @@ int main(int argc, char** argv )
     ros::NodeHandle nh("~");
     std::string param;
     nh.getParam("robot_name_test", param);
-    ROS_INFO("Got parameter : %s", param.c_str());
+    ROS_WARN("Got parameter : %s", param.c_str());
     LinoBase lino;
     ros::spin();
     return 0;
