@@ -1,0 +1,3 @@
+[submodule "imu_calib_languageslam"]
+	path = imu_calib_languageslam
+	url = https://github.com/Tristan9497/imu_calib_languageslam.git
