@@ -9,12 +9,12 @@ LinoBase::LinoBase():
     vel_dt_(0),
     x_pos_(0),
     y_pos_(0),
-    heading_(0),
-    ns=ros::this_node::getNamespace()
+    heading_(0)
 
 {
     odom_publisher_ = nh_.advertise<nav_msgs::Odometry>("raw_odom", 50);
     velocity_subscriber_ = nh_.subscribe("raw_vel", 50, &LinoBase::velCallback, this);
+    ns=ros::this_node::getNamespace();
 }
 
 void LinoBase::velCallback(const lino_msgs::Velocities& vel)
