@@ -8,6 +8,7 @@
 #include <nav_msgs/Odometry.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <geometry_msgs/TransformStamped.h>
+#include "std_msgs/String.h"
 
 class LinoBase
 {
