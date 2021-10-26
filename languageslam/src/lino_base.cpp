@@ -15,6 +15,7 @@ LinoBase::LinoBase():
     odom_publisher_ = nh_.advertise<nav_msgs::Odometry>("raw_odom", 50);
     velocity_subscriber_ = nh_.subscribe("raw_vel", 50, &LinoBase::velCallback, this);
     ns=ros::this_node::getNamespace();
+    ns.erase(0,1);//since get namespace adds a / infront, which is messing with tf2
 }
 
 void LinoBase::velCallback(const lino_msgs::Velocities& vel)
