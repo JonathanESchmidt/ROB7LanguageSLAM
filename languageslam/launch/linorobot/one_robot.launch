@@ -23,7 +23,7 @@
     <!-- Odom-IMU Extended Kalman Filter-->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
         <remap from="odometry/filtered" to="odom" />
-        <rosparam command="load" file="$(find linorobot)/param/ekf/robot_localization.yaml" />
+        <rosparam command="load" file="$(find languageslam)/config/linorobot/robot_localization.yaml" subst_value="true" />
     </node>
 
     <!-- Run Linorobot compatible laser drivers -->
