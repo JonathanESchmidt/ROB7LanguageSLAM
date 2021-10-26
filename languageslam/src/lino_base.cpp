@@ -10,7 +10,7 @@ LinoBase::LinoBase():
     x_pos_(0),
     y_pos_(0),
     heading_(0),
-    ns=ros::this_node::getNamespace();
+    ns=ros::this_node::getNamespace()
 
 {
     odom_publisher_ = nh_.advertise<nav_msgs::Odometry>("raw_odom", 50);
