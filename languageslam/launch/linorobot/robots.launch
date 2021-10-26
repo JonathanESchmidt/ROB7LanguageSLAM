@@ -1,0 +1,26 @@
+  
+  
+  <launch>
+    <group ns="robot1">
+        <arg name="robot_name" value="robot1"/>
+        <param name="robot_name"  value="$(arg robot_name)" />
+        <param name="tf_prefix" value="$(arg robot_name)" />
+
+        <include file="$(find languageslam)/launch/linorobot/one_robot.launch" >
+            <arg name="robot_name"  value="$(arg robot_name)" />
+        </include>
+    </group>
+
+    <!-- <group ns="robot2">
+        <arg name="robot_name" value="robot2"/>
+        <param name="robot_name"  value="$(arg robot_name)" />
+        <param name="tf_prefix" value="$(arg robot_name)" />
+
+        <include file="$(find languageslam)/launch/linorobot/one_robot.launch" >
+            <arg name="robot_name"  value="$(arg robot_name)" />
+        </include>
+    </group> -->
+    
+
+
+  </launch>

@@ -10,7 +10,13 @@ project(languageslam)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  tf2
   std_msgs
+  tf2_ros
+  nav_msgs
+  lino_msgs
+  geometry_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,8 +110,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES languageslam
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  LIBRARIES languageslam linorobot
+#  CATKIN_DEPENDS roscpp rospy tf2 tf2_ros nav_msgs lino_msgs geometry_msgs sensor_msgs std_msgs
 #  DEPENDS system_lib
 )
 
@@ -116,9 +122,14 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
+
+add_library(lino_base src/lino_base.cpp)
+add_executable(lino_base_node src/lino_base_node.cpp)
+target_link_libraries(lino_base_node lino_base ${catkin_LIBRARIES})
+add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
