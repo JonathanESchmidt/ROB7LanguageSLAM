@@ -11,7 +11,7 @@
   </node>
 
 
-  <node name="cartographer_grpc_node_3" pkg="cartographer_ros"
+  <!--node name="cartographer_grpc_node_3" pkg="cartographer_ros"
     type="cartographer_grpc_node" args="
         -configuration_directory $(find languageslam)/config
         -configuration_basename client.lua
@@ -20,11 +20,8 @@
     output="screen">
     <remap from="/scan" to="scan"/>
 
-  </node>
-  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-    type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
-  <node name="rviz_cloud" pkg="rviz" type="rviz" required="true"
-    args="-d $(find languageslam)/config/rviz_config.rviz" />
+  </node-->
+
 </group>
 </launch>
 
