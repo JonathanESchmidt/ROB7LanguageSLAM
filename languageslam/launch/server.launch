@@ -1,5 +1,4 @@
 <launch>
-<param name="/use_sim_time" value="true" />
 
 <group>
   <env name="ROS_MASTER_URI" value="http://localhost:11313" /><!--only needed for running this all on the same machine-->
@@ -26,9 +25,6 @@
     type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
   <node name="rviz_cloud" pkg="rviz" type="rviz" required="true"
     args="-d $(find languageslam)/config/rviz_config.rviz" />
-
-
-
 </group>
 </launch>
 

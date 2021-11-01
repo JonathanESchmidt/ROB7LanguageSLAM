@@ -1,10 +1,8 @@
 <launch>
-  <param name="/use_sim_time" value="true" />
-
-  <group>
-    <env name="ROS_MASTER_URI" value="http://localhost:11311" /><!--only needed for running this all on the same machine-->
+  <arg name="robot_name"/>
+    <!--env name="ROS_MASTER_URI" value="http://localhost:11311" /><only needed for running this all on the same machine>
     <node name="playbag_1" pkg="rosbag" type="play"
-      args="--clock $(env HOME)/Downloads/ROSbags/1210bag3.bag" />
+      args="clock $(env HOME)/Downloads/ROSbags/1210bag3.bag" /-->
 
 
 
@@ -13,11 +11,11 @@
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
           -server_address localhost:50051
-          -client_id 1
+          -client_id $(arg robot_name)
           "
           
       output="screen">
-      <remap from="/scan" to="scan"/>
+      <remap from="/$(arg robot_name)/scan" to="scan"/>
     </node>
 
 
@@ -28,5 +26,4 @@
             ">
     </node>
 
-  </group>
 </launch>
