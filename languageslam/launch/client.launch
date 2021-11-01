@@ -16,6 +16,7 @@
           
       output="screen">
       <remap from="/$(arg robot_name)/scan" to="scan"/>
+      <remap from="/$(arg robot_name)/odom" to="odom"/>
     </node>
 
 
@@ -25,5 +26,4 @@
             -configuration_basename robot_1_server.lua
             ">
     </node>
-
 </launch>
