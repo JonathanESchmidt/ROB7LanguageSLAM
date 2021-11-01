@@ -10,7 +10,7 @@
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
-          -server_address localhost:50051
+          -server_address 192.168.1.43:50051
           -client_id $(arg robot_name)
           "
           
