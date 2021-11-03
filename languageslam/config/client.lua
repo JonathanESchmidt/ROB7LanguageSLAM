@@ -1,6 +1,6 @@
 include "map_builder.lua"
 include "trajectory_builder.lua"
-robot_name= os.getenv("robot_ip")
+robot_name= os.getenv("robot_name")
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
