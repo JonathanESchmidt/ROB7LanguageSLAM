@@ -39,7 +39,7 @@
 
     <include file="$(find languageslam)/launch/client.launch">
         <arg name="robot_name"  value="$(arg robot_name)" />
-        <arg name="robot_name"  value="$(arg robot_ip)" />
+        <arg name="robot_ip"  value="$(arg robot_ip)" />
     </include>
 
     <include file="$(find linorobot)/launch/include/move_base/move_base_$(env LINOBASE).launch" />
