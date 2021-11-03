@@ -6,6 +6,6 @@
         <rosparam file="$(find languageslam)/config/linorobot/global_costmap_params.yaml" command="load" />
         <rosparam file="$(find linorobot)/param/navigation/base_local_planner_default_params.yaml" command="load" />
         <rosparam file="$(find linorobot)/param/navigation/move_base_params.yaml" command="load" />
-        <remap from="map" to="/map"/>
+        <remap from="map" to="$(arg robot_name)/map"/>
     </node>
 </launch>
