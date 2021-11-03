@@ -40,4 +40,6 @@
     <include file="$(find languageslam)/launch/client.launch">
         <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
+
+    <include file="$(find linorobot)/launch/include/move_base/move_base_$(env LINOBASE).launch" />
 </launch>
