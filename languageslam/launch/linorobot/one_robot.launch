@@ -22,10 +22,10 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.098 0 0 0  $(arg robot_name)/base_footprint $(arg robot_name)/base_link"/>
 
     <!-- Odom-IMU Extended Kalman Filter-->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+    <!--node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
         <remap from="odometry/filtered" to="odom" />
         <rosparam command="load" file="$(find languageslam)/config/linorobot/robot_localization.yaml" subst_value="true" />
-    </node>
+    </node-->
 
     <!-- Run Linorobot compatible laser drivers -->
 
