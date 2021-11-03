@@ -1,13 +1,13 @@
 include "map_builder.lua"
 include "trajectory_builder.lua"
-
+robot_name= os.getenv("robot_ip")
 options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "robot1/base_link",
-  published_frame = "robot1/base_link",
-  odom_frame = "robot1/odom",
+  tracking_frame = robot_name .. "/base_link",
+  published_frame = robot_name .. "/base_link",
+  odom_frame = robot_name .. "/odom",
   provide_odom_frame = true,
   publish_frame_projected_to_2d = true,
   use_pose_extrapolator = true,

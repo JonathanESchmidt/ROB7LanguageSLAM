@@ -1,7 +1,7 @@
 <launch>
   <arg name="robot_name"/>
   <arg name="robot_ip"/>
-
+  <env name="robot_name" value="$(arg robot_name)"/>
   <env name="robot_ip" value="$(arg robot_ip)"/>
     <!--env name="ROS_MASTER_URI" value="http://localhost:11311" /><only needed for running this all on the same machine>
     <node name="playbag_1" pkg="rosbag" type="play"
