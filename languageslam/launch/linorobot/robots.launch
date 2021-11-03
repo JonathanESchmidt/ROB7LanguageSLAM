@@ -11,6 +11,7 @@
 
         <include file="$(find languageslam)/launch/linorobot/one_robot.launch" >
             <arg name="robot_name"  value="$(arg robot_name)" />
+            <arg name="robot_name"  value="$(arg robot_ip)" />
         </include>
     </group>
 
