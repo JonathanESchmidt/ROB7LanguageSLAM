@@ -43,5 +43,5 @@
         <arg name="robot_ip"  value="$(arg robot_ip)" />
     </include>
 
-    <include file="$(find linorobot)/launch/include/move_base/move_base_$(env LINOBASE).launch" />
+    <include file="$(find languageslam)/launch/move_base_$(env LINOBASE).launch" />
 </launch>
