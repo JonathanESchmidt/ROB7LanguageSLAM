@@ -3,8 +3,8 @@
   <launch>
     <group ns="robot8">
         <arg name="robot_name" value="robot8"/>
-        <arg name="robot_ip" value="192.168.0.118:50051">
-        <env name="robot_ip" value="$(arg robot_ip)">
+        <arg name="robot_ip" value="192.168.0.118:50051"/>
+        <env name="robot_ip" value="$(arg robot_ip)"/>
 
         <param name="robot_name"  value="$(arg robot_name)" />
         <param name="tf_prefix" value="$(arg robot_name)" />
