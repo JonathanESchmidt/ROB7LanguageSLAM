@@ -2,6 +2,7 @@
     <!--This is a universal approach by inserting the robot name using an argument-->
 
     <arg name="robot_name"/>
+    <arg name="robot_ip"/>
     <!-- Start ROS communication between the robot's computer and Linorobot base -->
     <node pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
         <param name="port" value="/dev/ttyACM0" />
