@@ -11,9 +11,9 @@
     </node>
 
     <!-- IMU Relay and Filter -->
-    <include file="$(find languageslam)/launch/linorobot/imu.launch" >
+    <!--include file="$(find languageslam)/launch/linorobot/imu.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
-    </include>
+    </include-->
 
     <!-- Publish Linorobot odometry -->
     <node pkg="languageslam" name="lino_base_node" type="lino_base_node" ></node>
