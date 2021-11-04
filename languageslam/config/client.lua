@@ -8,7 +8,7 @@ options = {
   tracking_frame = robot_name .. "/laser",
   published_frame = robot_name .. "/odom",
   odom_frame = robot_name .. "/odom",
-  provide_odom_frame = true,
+  provide_odom_frame = false,
   publish_frame_projected_to_2d = true,
   
   use_pose_extrapolator = true,
@@ -24,7 +24,7 @@ options = {
   pose_publish_period_sec = 5e-3,
   trajectory_publish_period_sec = 30e-3,
   rangefinder_sampling_ratio = 1.,
-  odometry_sampling_ratio = 0.5,
+  odometry_sampling_ratio = 0.6,
   fixed_frame_pose_sampling_ratio = 1.,
   imu_sampling_ratio = 1.,
   landmarks_sampling_ratio = 1.,
@@ -32,7 +32,7 @@ options = {
 
 MAP_BUILDER.use_trajectory_builder_2d = true
 
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 35
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 10
 TRAJECTORY_BUILDER_2D.min_range = 0.3
 TRAJECTORY_BUILDER_2D.max_range = 8.
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 1.
