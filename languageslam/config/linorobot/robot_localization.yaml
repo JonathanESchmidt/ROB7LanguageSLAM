@@ -18,7 +18,7 @@ odom0_config: [false, false, false,
 
 odom0_differential: true
 odom0_relative: false
-
+odom0_queue_size: 20
 imu0: imu/data
 
 # NOTE: If you find that your robot has x drift,
@@ -30,7 +30,7 @@ imu0_config: [false, false, false,
               false, false, true,
               false, false, false]
 
-imu0_differential: true
+imu0_differential: false
 imu0_relative: true
 
 odom_frame: odom
