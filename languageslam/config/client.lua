@@ -8,7 +8,7 @@ options = {
   tracking_frame = robot_name .. "/laser",
   published_frame = robot_name .. "/odom",
   odom_frame = robot_name .. "/odom",
-  provide_odom_frame = false,
+  provide_odom_frame = true,
   publish_frame_projected_to_2d = true,
   
   use_pose_extrapolator = true,
