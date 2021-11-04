@@ -38,12 +38,13 @@
         <arg name="robot_name"  value="$(arg robot_name)" />
     </include>
 
-    <include file="$(find languageslam)/launch/client.launch">
-        <arg name="robot_name"  value="$(arg robot_name)" />
-        <arg name="robot_ip"  value="$(arg robot_ip)" />
-    </include>
+
 
     <include file="$(find languageslam)/launch/linorobot/move_base_$(env LINOBASE).launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
+    </include>
+    <include file="$(find languageslam)/launch/client.launch">
+        <arg name="robot_name"  value="$(arg robot_name)" />
+        <arg name="robot_ip"  value="$(arg robot_ip)" />
     </include>
 </launch>
