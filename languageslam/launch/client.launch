@@ -19,7 +19,7 @@
           
       output="screen">
       <remap from="/$(arg robot_name)/scan" to="scan"/>
-      <remap from="/$(arg robot_name)/raw_odom" to="odom"/>
+      <remap from="/$(arg robot_name)/odom" to="odom"/>
     </node>
 
 
