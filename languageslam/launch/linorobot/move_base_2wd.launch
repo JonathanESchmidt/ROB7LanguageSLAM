@@ -1,13 +1,13 @@
 <launch>
     <arg name="robot_name"/>
     <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
-    
-        <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+        <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="global_costmap" subst_value="true"/>
+        <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="local_costmap" subst_value="true"/>
         <rosparam file="$(find languageslam)/config/linorobot/local_costmap_params.yaml" command="load" subst_value="true" />
         <rosparam file="$(find languageslam)/config/linorobot/global_costmap_params.yaml" command="load" subst_value="true" />
-        <rosparam file="$(find languageslam)/config/linorobot/base_global_planner.yaml" command="load" />
-        <rosparam file="$(find languageslam)/config/linorobot/base_local_planner_default_params.yaml" command="load" />
+        <rosparam file="$(find languageslam)/config/linorobot/base_global_planner.yaml" command="load" subst_value="true"/>
+        <rosparam file="$(find languageslam)/config/linorobot/base_local_planner_default_params.yaml" command="load" subst_value="true"/>
         
         <rosparam file="$(find languageslam)/config/linorobot/move_base_params.yaml" command="load" />
     </node>
