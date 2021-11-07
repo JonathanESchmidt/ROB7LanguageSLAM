@@ -10,5 +10,6 @@
         <rosparam file="$(find languageslam)/config/linorobot/base_local_planner_default_params.yaml" command="load" subst_value="true"/>
         
         <rosparam file="$(find languageslam)/config/linorobot/move_base_params.yaml" command="load" />
+        <remap from="/scan" to="/$(arg robot_name)/scan"/>
     </node>
 </launch>

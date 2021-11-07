@@ -7,7 +7,7 @@ transform_tolerance: 0.5
 observation_sources: scan
 scan:
   data_type: LaserScan
-  topic: $(arg robot_name)/scan
+  topic: /scan
   marking: true
   clearing: true
 
