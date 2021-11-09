@@ -15,7 +15,11 @@ LinoBase::LinoBase():
     odom_publisher_ = nh_.advertise<nav_msgs::Odometry>("raw_odom", 50);
     velocity_subscriber_ = nh_.subscribe("raw_vel", 50, &LinoBase::velCallback, this);
     ns=ros::this_node::getNamespace();
-    ns.erase(0,1);//since get namespace adds a / infront, which is messing with tf2
+    if(!ns.empty())
+    {
+        ns.erase(0,1);//since get namespace adds a / infront, which is messing with tf2
+        ns=ns+"/";
+    }
 }
 
 void LinoBase::velCallback(const lino_msgs::Velocities& vel)
@@ -42,8 +46,8 @@ void LinoBase::velCallback(const lino_msgs::Velocities& vel)
     //ROS has a function to calculate yaw in quaternion angle
     odom_quat.setRPY(0,0,heading_);
 
-    odom_trans.header.frame_id = ns+"/odom";
-    odom_trans.child_frame_id = ns+"/base_footprint";
+    odom_trans.header.frame_id = ns+"odom";
+    odom_trans.child_frame_id = ns+"base_footprint";
     //robot's position in x,y, and z
     odom_trans.transform.translation.x = x_pos_;
     odom_trans.transform.translation.y = y_pos_;
