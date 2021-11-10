@@ -43,9 +43,9 @@
 
 
 
-    <include file="$(find languageslam)/launch/linorobot/move_base_$(env LINOBASE).launch" >
+    <!--include file="$(find languageslam)/launch/linorobot/move_base_$(env LINOBASE).launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
-    </include>
+    </include-->
     
     <include file="$(find languageslam)/launch/linorobot/explore.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
