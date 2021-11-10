@@ -18,7 +18,8 @@ LinoBase::LinoBase():
     if(!ns.empty())
     {
         ns.erase(0,1);//since get namespace adds a / infront, which is messing with tf2
-        ns=ns+'/';
+        ROS_WARN(ns);
+        ns+='/';
     }
 }
 
