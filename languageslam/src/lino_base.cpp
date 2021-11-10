@@ -63,8 +63,8 @@ void LinoBase::velCallback(const lino_msgs::Velocities& vel)
     //odom_broadcaster_.sendTransform(odom_trans);
 
     odom.header.stamp = current_time;
-    odom.header.frame_id = ns+"/odom";
-    odom.child_frame_id = ns+"/base_footprint";
+    odom.header.frame_id = ns+"odom";
+    odom.child_frame_id = ns+"base_footprint";
 
     //robot's position in x,y, and z
     odom.pose.pose.position.x = x_pos_;
