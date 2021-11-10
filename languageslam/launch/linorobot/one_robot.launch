@@ -47,7 +47,7 @@
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include>
     
-    <include file="$(find languageslam)/launch/linorobot/explore.launch" >
+    <include file="$(find languageslam)/launch/linorobot/explore_costmap.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include>
 
