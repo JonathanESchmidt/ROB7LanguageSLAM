@@ -1,7 +1,7 @@
 <launch>
 
 <group>
-  <env name="ROS_MASTER_URI" value="http://localhost:11313" /><!--only needed for running this all on the same machine-->
+  <env name="ROS_MASTER_URI" value="http://localhost:11311" /><!--only needed for running this all on the same machine-->
 
   <node name="cartographer_grpc_server_3" pkg="cartographer_ros"
       type="cartographer_grpc_server.sh" args="
