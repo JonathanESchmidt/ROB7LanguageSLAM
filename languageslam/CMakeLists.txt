@@ -134,7 +134,7 @@ add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
 
 catkin_install_python(
-  PROGRAMS src/map_converter.py
+  PROGRAMS nodes/map_converter.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ## Declare a C++ library
