@@ -19,9 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   nav_msgs
 )
-catkin_install_python(PROGRAMS src/map_converter.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -29,8 +27,11 @@ catkin_install_python(PROGRAMS src/map_converter.py
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
-
+catkin_python_setup()
+catkin_install_python(
+  PROGRAMS src/map_converter.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
