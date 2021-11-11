@@ -135,7 +135,6 @@ add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
 add_executable(map_converter src/map_converter.py)
 target_link_libraries(map_converter ${catkin_LIBRARIES})
-add_dependencies(map_converter)
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/languageslam.cpp
