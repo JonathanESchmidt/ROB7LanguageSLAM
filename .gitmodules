@@ -1,3 +1,6 @@
 [submodule "imu_calib"]
 	path = imu_calib
 	url = https://github.com/Tristan9497/imu_calib.git
+[submodule "m-explore"]
+	path = m-explore
+	url = https://github.com/Tristan9497/m-explore.git
