@@ -132,8 +132,6 @@ add_executable(lino_base_node src/lino_base_node.cpp)
 target_link_libraries(lino_base_node lino_base ${catkin_LIBRARIES})
 add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
-
-add_executable(map_converter src/map_converter.py)
 target_link_libraries(map_converter ${catkin_LIBRARIES})
 catkin_install_python(
   PROGRAMS src/map_converter.py
