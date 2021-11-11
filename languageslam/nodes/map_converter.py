@@ -13,7 +13,7 @@ N = 50
 # ----0-----
 #   unknown
 # ***************
-def callback(cmap: OccupancyGrid):
+def callback(cmap):
     data = list(cmap.data)
     for y in range(cmap.info.height):
         for x in range(cmap.info.width):
