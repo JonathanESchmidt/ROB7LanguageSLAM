@@ -133,10 +133,7 @@ target_link_libraries(lino_base_node lino_base ${catkin_LIBRARIES})
 add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
 
-catkin_install_python(
-  PROGRAMS nodes/map_converter.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/languageslam.cpp
