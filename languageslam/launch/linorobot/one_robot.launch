@@ -46,7 +46,7 @@
     <include file="$(find languageslam)/launch/linorobot/move_base_$(env LINOBASE).launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include>
-    
+    <node pkg="languageslam" type="map_converter" name="map_converter"/>
     <include file="$(find languageslam)/launch/linorobot/explore.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include>
