@@ -28,10 +28,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
 catkin_python_setup()
-catkin_install_python(
-  PROGRAMS src/map_converter.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
@@ -138,6 +135,10 @@ add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
 add_executable(map_converter src/map_converter.py)
 target_link_libraries(map_converter ${catkin_LIBRARIES})
+catkin_install_python(
+  PROGRAMS src/map_converter.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/languageslam.cpp
