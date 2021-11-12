@@ -4,3 +4,6 @@
 [submodule "m-explore"]
 	path = m-explore
 	url = https://github.com/Tristan9497/m-explore.git
+[submodule "lino_msgs"]
+	path = lino_msgs
+	url = https://github.com/linorobot/lino_msgs
