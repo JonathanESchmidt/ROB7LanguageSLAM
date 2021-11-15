@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QApplication, QGridLayout, QWidget,
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
-## Using python==3.6 with PyAudio
+## Using python==2.7 with PyAudio
 import speech_recognition as sr
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
@@ -50,13 +50,13 @@ class App(QWidget):
 
             try:
                 text = self.r.recognize_google(audio_data)
-            
+            	text = str(text)
             except:
                 pass
         
         if text != '':
             # if any words are recognised convert and extract commands
-            text = str.lower(text)
+	    text = str.lower(text)
             token = word_tokenize(text)
             stems = []
             for w in token:
@@ -79,6 +79,7 @@ class App(QWidget):
                 output = "Command recognised: Stopping"
             elif command[0] == "move":
                 move = set(self.movements).intersection(stems)
+		move = str(list(move)[0])
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
