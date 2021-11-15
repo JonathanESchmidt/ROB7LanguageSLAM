@@ -54,9 +54,9 @@ class App(QWidget):
     def moverobot(self,robotno,move):
         
         if move=='left':
-            self.sendGoal(robotno,1,0,1.5708)
+            self.sendGoal(robotno,0,1,1.5708)
         elif move=='right':
-            self.sendGoal(robotno,-1,0,-1.5708)
+            self.sendGoal(robotno,0,-1,-1.5708)
         elif move=='forward':
             self.sendGoal(robotno,1,0,0)
         elif move=='backward':
