@@ -76,9 +76,12 @@ class App(QWidget):
             self.client7.wait_for_server()
             self.client7.send_goal(goal)
         elif robotno==8:
-            self.client8.wait_for_server()
-            print("waiting for server")
-            self.client8.send_goal(goal)
+            try:
+                self.client8.wait_for_server()
+                print("waiting for server")
+                self.client8.send_goal(goal)
+            except:
+                print("Could not send message")
 
         '''wait = client.wait_for_result()
         if not wait:
