@@ -52,6 +52,7 @@ class App(QWidget):
 
   
     def moverobot(self,robotno,move):
+        
         if move=='left':
             self.sendGoal(robotno,1,0,1.5708)
         elif move=='right':
@@ -70,7 +71,7 @@ class App(QWidget):
         goal.target_pose.pose.position.y = y
         # RPY to convert: 90deg, 0, -90deg
         goal.target_pose.pose.orientation= quaternion_from_euler(0, 0, theta)
-
+        rospy.logwarn(goal, *args, **kwargs)
         if robotno==7:
             self.client7.wait_for_server()
             self.client7.send_goal(goal)
