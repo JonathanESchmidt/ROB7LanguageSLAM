@@ -47,8 +47,8 @@
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include>
     <node pkg="languageslam" type="map_converter.py" name="map_converter"/>
-    <include file="$(find languageslam)/launch/linorobot/explore.launch" >
+    <!--include file="$(find languageslam)/launch/linorobot/explore.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
-    </include>
+    </include-->
 
 </launch>
