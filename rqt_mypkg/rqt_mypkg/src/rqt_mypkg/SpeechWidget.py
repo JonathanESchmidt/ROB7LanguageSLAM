@@ -70,7 +70,12 @@ class App(QWidget):
         goal.target_pose.pose.position.x = x
         goal.target_pose.pose.position.y = y
         # RPY to convert: 90deg, 0, -90deg
-        goal.target_pose.pose.orientation= quaternion_from_euler(0, 0, theta)
+        orientation= quaternion_from_euler(0, 0, theta)
+        goal.target_pose.pose.orientation.x=orientation[0]
+        goal.target_pose.pose.orientation.y=orientation[1]
+        goal.target_pose.pose.orientation.z=orientation[2]
+        goal.target_pose.pose.orientation.w=orientation[3]
+        
         print(str(goal))
         if robotno==7:
             self.client7.wait_for_server()
