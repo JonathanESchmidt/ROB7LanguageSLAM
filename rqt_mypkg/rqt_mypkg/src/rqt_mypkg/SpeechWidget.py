@@ -13,6 +13,7 @@ import rospy
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Quaternion
+from tf.transformations import quaternion_from_euler
 
 class App(QWidget):
 
