@@ -1,7 +1,7 @@
   
   
   <launch>
-    <group ns="robot7">
+    <!--group ns="robot7">
         <arg name="robot_name" value="robot7"/>
         <arg name="robot_ip" value="192.168.0.117:50051"/>
 
@@ -12,8 +12,8 @@
             <arg name="robot_name"  value="$(arg robot_name)" />
             <arg name="robot_ip"  value="$(arg robot_ip)" />
         </include>
-    </group>
-     <!--group ns="robot8">
+    </group-->
+     <group ns="robot8">
         <arg name="robot_name" value="robot8"/>
         <arg name="robot_ip" value="192.168.0.118:50051"/>
 
@@ -24,7 +24,7 @@
             <arg name="robot_name"  value="$(arg robot_name)" />
             <arg name="robot_ip"  value="$(arg robot_ip)" />
         </include>
-    </group-->
+    </group>
 
     <!-- <group ns="robot2">
         <arg name="robot_name" value="robot2"/>
