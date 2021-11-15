@@ -9,6 +9,11 @@ import speech_recognition as sr
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 
+import rospy
+import actionlib
+from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from geometry_msgs.msg import Quaternion
+
 class App(QWidget):
 
     def __init__(self):
@@ -16,10 +21,10 @@ class App(QWidget):
         super(App, self).__init__()
         self.setWindowTitle('Voice Control')
         
-        self.check_robot1 = QCheckBox("Robot 1", self)
-        self.check_robot2 = QCheckBox("Robot 2", self)
-        self.check_robot1.setToolTip('Control Robot 1')
-        self.check_robot2.setToolTip('Control Robot 2')
+        self.check_robot7 = QCheckBox("Robot 7", self)
+        self.check_robot8 = QCheckBox("Robot 8", self)
+        self.check_robot7.setToolTip('Control Robot 7')
+        self.check_robot8.setToolTip('Control Robot 8')
         self.label = QLabel("")
         self.label2 = QLabel("")
         self.commands = [ "stop", "move", "explore", "go"]
@@ -33,14 +38,51 @@ class App(QWidget):
 
         layout = QGridLayout(self)
         layout.addWidget(QLabel("Choose robots to control"),0,0)
-        layout.addWidget(self.check_robot1, 1, 0)
-        layout.addWidget(self.check_robot2, 1, 1)
+        layout.addWidget(self.check_robot7, 1, 0)
+        layout.addWidget(self.check_robot8, 1, 1)
         layout.addWidget(self.button, 2, 0)
         layout.addWidget(self.label, 3, 0)
         layout.addWidget(self.label2, 4, 0)
+        self.client7 = actionlib.SimpleActionClient('/robot7/move_base',MoveBaseAction)
+        self.client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
+        #wait for action client server
         
         self.show()
 
+  
+    def moverobot(self,robotno,move):
+        if move=='left':
+            self.sendGoal(robotno,1,0,1.5708)
+        elif move=='right':
+            self.sendGoal(robotno,-1,0,-1.5708)
+        elif move=='forward':
+            self.sendGoal(robotno,1,0,0)
+        elif move=='backward':
+            self.sendGoal(robotno,-1,0,-3.1415)
+
+    def sendGoal(self,robotno,x,y,theta):
+
+        goal = MoveBaseGoal()
+        goal.target_pose.header.frame_id = "/robot"+str(robotno)+"/base_footprint"
+        goal.target_pose.header.stamp = rospy.Time.now()
+        goal.target_pose.pose.position.x = x
+        goal.target_pose.pose.position.y = y
+        # RPY to convert: 90deg, 0, -90deg
+        goal.target_pose.pose.orientation= quaternion_from_euler(0, 0, theta)
+
+        if robotno==7:
+            self.client7.wait_for_server()
+            self.client7.send_goal(goal)
+        elif robotno==8:
+            self.client8.wait_for_server()
+            self.client7.send_goal(goal)
+
+        '''wait = client.wait_for_result()
+        if not wait:
+            rospy.logerr("Action server not available!")
+            rospy.signal_shutdown("Action server not available!")
+        else:
+            return client.get_result()'''
     @pyqtSlot()
     def on_click(self):
         text = ''
@@ -50,13 +92,13 @@ class App(QWidget):
 
             try:
                 text = self.r.recognize_google(audio_data)
-            	text = str(text)
+                text = str(text)
             except:
                 pass
         
         if text != '':
             # if any words are recognised convert and extract commands
-	    text = str.lower(text)
+            text = str.lower(text)
             token = word_tokenize(text)
             stems = []
             for w in token:
@@ -79,11 +121,12 @@ class App(QWidget):
                 output = "Command recognised: Stopping"
             elif command[0] == "move":
                 move = set(self.movements).intersection(stems)
-		move = str(list(move)[0])
+                move = str(list(move)[0])
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
                     output = "Command recognised: Moving " + move
+
             
             elif command[0] == "explore":
                 output = "Command recognised. Exploring"
@@ -96,17 +139,22 @@ class App(QWidget):
 
             self.label.setText(output)
             # TODO add commands to multiple robots
-            if self.check_robot1.isChecked() and self.check_robot2.isChecked():
-                self.label2.setText("Sending command to robot 1 and robot 2")
-            elif self.check_robot1.isChecked():
-                self.label2.setText("Sending command to robot 1")
-            elif self.check_robot2.isChecked():
-                self.label2.setText("Sending command to robot 2")
+            if self.check_robot7.isChecked() and self.check_robot8.isChecked():
+                self.label2.setText("Sending command to robot 7 and robot 8")
+                self.moverobot(7,move)
+                self.moverobot(8,move)
+            elif self.check_robot7.isChecked():
+                self.label2.setText("Sending command to robot 7")
+                self.moverobot(7,move)
+            elif self.check_robot8.isChecked():
+                self.label2.setText("Sending command to robot 8")
+                self.moverobot(8,move)
             else:
                 self.label2.setText("No robot selected. Command not sent")
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    rospy.init_node('SpeechWidget')
     ex = App()
     sys.exit(app.exec_())
