@@ -45,7 +45,7 @@ class App(QWidget):
         layout.addWidget(self.label, 3, 0)
         layout.addWidget(self.label2, 4, 0)
         #self.client7 = actionlib.SimpleActionClient('/robot7/move_base',MoveBaseAction)#for now commented out
-        self.client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
+        self.client8 = actionlib.SimpleActionClient('robot8/move_base',MoveBaseAction)
         #wait for action client server
         
         self.show()
@@ -65,7 +65,7 @@ class App(QWidget):
     def sendGoal(self,robotno,x,y,theta):
 
         goal = MoveBaseGoal()
-        goal.target_pose.header.frame_id = "/robot"+str(robotno)+"/base_footprint"
+        goal.target_pose.header.frame_id = "robot"+str(robotno)+"/base_footprint"
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.pose.position.x = x
         goal.target_pose.pose.position.y = y
