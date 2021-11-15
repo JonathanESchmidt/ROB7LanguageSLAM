@@ -44,6 +44,7 @@ class App(QWidget):
         layout.addWidget(self.button, 2, 0)
         layout.addWidget(self.label, 3, 0)
         layout.addWidget(self.label2, 4, 0)
+        rospy.init_node('SpeechWidget')
         #self.client7 = actionlib.SimpleActionClient('/robot7/move_base',MoveBaseAction)#for now commented out
         self.client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
         #wait for action client server
@@ -163,7 +164,8 @@ class App(QWidget):
 
 
 if __name__ == '__main__':
+    
     app = QApplication(sys.argv)
-    rospy.init_node('SpeechWidget')
+    
     ex = App()
     sys.exit(app.exec_())
