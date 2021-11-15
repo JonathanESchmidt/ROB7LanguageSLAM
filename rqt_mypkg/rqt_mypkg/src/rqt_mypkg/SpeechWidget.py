@@ -45,7 +45,7 @@ class App(QWidget):
         layout.addWidget(self.label, 3, 0)
         layout.addWidget(self.label2, 4, 0)
         #self.client7 = actionlib.SimpleActionClient('/robot7/move_base',MoveBaseAction)#for now commented out
-        self.client8 = actionlib.SimpleActionClient('robot8/move_base',MoveBaseAction)
+        self.client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
         #wait for action client server
         
         self.show()
