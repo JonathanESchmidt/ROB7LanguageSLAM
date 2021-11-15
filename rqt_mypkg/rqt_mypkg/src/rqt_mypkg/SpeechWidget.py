@@ -77,7 +77,7 @@ class App(QWidget):
             self.client7.send_goal(goal)
         elif robotno==8:
             self.client8.wait_for_server()
-           print("waiting for server")
+            print("waiting for server")
             self.client8.send_goal(goal)
 
         '''wait = client.wait_for_result()
