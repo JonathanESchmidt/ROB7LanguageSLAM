@@ -71,7 +71,7 @@ class App(QWidget):
         goal.target_pose.pose.position.y = y
         # RPY to convert: 90deg, 0, -90deg
         goal.target_pose.pose.orientation= quaternion_from_euler(0, 0, theta)
-        print("testicle")
+        print(str(goal))
         if robotno==7:
             self.client7.wait_for_server()
             self.client7.send_goal(goal)
