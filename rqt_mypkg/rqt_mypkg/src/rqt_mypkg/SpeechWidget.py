@@ -46,7 +46,7 @@ class App(QWidget):
         layout.addWidget(self.label2, 4, 0)
         #rospy.init_node('SpeechCommand')
         #self.client7 = actionlib.SimpleActionClient('/robot7/move_base',MoveBaseAction)#for now commented out
-        self.client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
+        
         #wait for action client server
         
         self.show()
@@ -64,7 +64,7 @@ class App(QWidget):
             self.sendGoal(robotno,-1,0,-3.1415)
 
     def sendGoal(self,robotno,x,y,theta):
-
+        client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "robot"+str(robotno)+"/base_footprint"
         goal.target_pose.header.stamp = rospy.Time.now()
@@ -78,12 +78,12 @@ class App(QWidget):
             self.client7.send_goal(goal)
         elif robotno==8:
             try:
-                self.client8.wait_for_server()
+                client8.wait_for_server()
             except:
                 print("Could not wait for sever")
 
             try:
-                self.client8.send_goal(goal)
+                client8.send_goal(goal)
             except:
                 print("Could not send goal")
 
