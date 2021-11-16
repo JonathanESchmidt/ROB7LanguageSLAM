@@ -157,6 +157,7 @@ class App(QWidget):
 
             
             elif command[0] == "explore":
+                #TODO add function to launch exploration
                 output = "Command recognised. Exploring"
 
             elif command[0] == "go":
@@ -164,8 +165,9 @@ class App(QWidget):
                 position = "position placeholder"
                 output = "Command recognised. Going to " + position
 
-'''
+
             self.label.setText(output)
+            '''
             # TODO add commands to multiple robots
             if self.check_robot7.isChecked() and self.check_robot8.isChecked():
                 self.label2.setText("Sending command to robot 7 and robot 8")
