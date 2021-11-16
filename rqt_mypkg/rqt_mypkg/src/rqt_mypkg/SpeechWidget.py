@@ -52,20 +52,20 @@ class App(QWidget):
         self.show()
 
   
-    def moverobot(self,robotno,move):
+    def moverobot(self, robotno, move):
         
         if move == 'left':
-            self.sendGoal(robotno,0,1,1.5708)
+            self.sendGoal(robotno, 0, 1, 1.5708)
         elif move == 'right':
-            self.sendGoal(robotno,0,-1,-1.5708)
+            self.sendGoal(robotno, 0, -1, -1.5708)
         elif move == 'forward':
-            self.sendGoal(robotno,1,0,0)
+            self.sendGoal(robotno, 1, 0, 0)
         elif move == 'backward':
-            self.sendGoal(robotno,-1,0,-3.1415)
+            self.sendGoal(robotno, -1, 0, -3.1415)
 
-    def sendGoal(self,robotno,x,y,theta):
+    def sendGoal(self, robotno, x, y, theta):
         goal = MoveBaseGoal()
-        goal.target_pose.header.frame_id = "robot"+str(robotno)+"/base_footprint"
+        goal.target_pose.header.frame_id = "robot" + str(robotno) + "/base_footprint"
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.pose.position.x = x
         goal.target_pose.pose.position.y = y
@@ -144,14 +144,14 @@ class App(QWidget):
                     output = "Command recognised: Moving " + move
                     if self.check_robot7.isChecked() and self.check_robot8.isChecked():
                         self.label2.setText("Sending command to robot 7 and robot 8")
-                        self.moverobot(7,move)
-                        self.moverobot(8,move)
+                        self.moverobot(7, move)
+                        self.moverobot(8, move)
                     elif self.check_robot7.isChecked():
                         self.label2.setText("Sending command to robot 7")
-                        self.moverobot(7,move)
+                        self.moverobot(7, move)
                     elif self.check_robot8.isChecked():
                         self.label2.setText("Sending command to robot 8")
-                        self.moverobot(8,move)
+                        self.moverobot(8, move)
                     else:
                         self.label2.setText("No robot selected. Command not sent")
 
@@ -171,14 +171,14 @@ class App(QWidget):
             # TODO add commands to multiple robots
             if self.check_robot7.isChecked() and self.check_robot8.isChecked():
                 self.label2.setText("Sending command to robot 7 and robot 8")
-                self.moverobot(7,move)
-                self.moverobot(8,move)
+                self.moverobot(7, move)
+                self.moverobot(8, move)
             elif self.check_robot7.isChecked():
                 self.label2.setText("Sending command to robot 7")
-                self.moverobot(7,move)
+                self.moverobot(7, move)
             elif self.check_robot8.isChecked():
                 self.label2.setText("Sending command to robot 8")
-                self.moverobot(8,move)
+                self.moverobot(8, move)
             else:
                 self.label2.setText("No robot selected. Command not sent")
 '''
