@@ -82,7 +82,7 @@ class App(QWidget):
             self.client7.send_goal(goal)
         elif robotno==8:
             try:
-                client8 = actionlib.SimpleActionClient('/robot8/move_base',MoveBaseAction)
+                client8 = actionlib.SimpleActionClient('/robot8/move_base', MoveBaseAction)
                 print("Client started")
                 client8.wait_for_server(rospy.Duration(10))
             except:
