@@ -54,13 +54,13 @@ class App(QWidget):
   
     def moverobot(self,robotno,move):
         
-        if move=='left':
+        if move == 'left':
             self.sendGoal(robotno,0,1,1.5708)
-        elif move=='right':
+        elif move == 'right':
             self.sendGoal(robotno,0,-1,-1.5708)
-        elif move=='forward':
+        elif move == 'forward':
             self.sendGoal(robotno,1,0,0)
-        elif move=='backward':
+        elif move == 'backward':
             self.sendGoal(robotno,-1,0,-3.1415)
 
     def sendGoal(self,robotno,x,y,theta):
@@ -69,12 +69,12 @@ class App(QWidget):
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.pose.position.x = x
         goal.target_pose.pose.position.y = y
-        # RPY to convert: 90deg, 0, -90deg
-        orientation= quaternion_from_euler(0, 0, theta)
-        goal.target_pose.pose.orientation.x=orientation[0]
-        goal.target_pose.pose.orientation.y=orientation[1]
-        goal.target_pose.pose.orientation.z=orientation[2]
-        goal.target_pose.pose.orientation.w=orientation[3]
+        # RPY to quaternion convert: 90deg, 0, -90deg
+        orientation = quaternion_from_euler(0, 0, theta)
+        goal.target_pose.pose.orientation.x = orientation[0]
+        goal.target_pose.pose.orientation.y = orientation[1]
+        goal.target_pose.pose.orientation.z = orientation[2]
+        goal.target_pose.pose.orientation.w = orientation[3]
         
         print(str(goal))
         if robotno==7:
@@ -142,6 +142,18 @@ class App(QWidget):
                     output = "Command not recognised. Please try again."
                 else:
                     output = "Command recognised: Moving " + move
+                    if self.check_robot7.isChecked() and self.check_robot8.isChecked():
+                        self.label2.setText("Sending command to robot 7 and robot 8")
+                        self.moverobot(7,move)
+                        self.moverobot(8,move)
+                    elif self.check_robot7.isChecked():
+                        self.label2.setText("Sending command to robot 7")
+                        self.moverobot(7,move)
+                    elif self.check_robot8.isChecked():
+                        self.label2.setText("Sending command to robot 8")
+                        self.moverobot(8,move)
+                    else:
+                        self.label2.setText("No robot selected. Command not sent")
 
             
             elif command[0] == "explore":
@@ -152,7 +164,7 @@ class App(QWidget):
                 position = "position placeholder"
                 output = "Command recognised. Going to " + position
 
-
+'''
             self.label.setText(output)
             # TODO add commands to multiple robots
             if self.check_robot7.isChecked() and self.check_robot8.isChecked():
@@ -167,7 +179,7 @@ class App(QWidget):
                 self.moverobot(8,move)
             else:
                 self.label2.setText("No robot selected. Command not sent")
-
+'''
 
 if __name__ == '__main__':
     
