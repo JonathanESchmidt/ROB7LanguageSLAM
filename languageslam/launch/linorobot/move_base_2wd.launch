@@ -1,6 +1,7 @@
 <launch>
     <arg name="robot_name"/>
-    <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+    <arg name="machine"/>
+    <node machine="$(arg machine)" pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
 
         <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="global_costmap" subst_value="true"/>
         <rosparam file="$(find languageslam)/config/linorobot/costmap_common_params.yaml" command="load" ns="local_costmap" subst_value="true"/>

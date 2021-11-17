@@ -2,25 +2,25 @@
   
   <launch>
 
-    <arg name="robot_name"/>
-    <arg name="robot_ip"/>
-    <arg name="robot_port"/>
-
     <!--configure machine for ssh access so we can launch these from the master on the robot-->
     <!--I think its highly disgusting to use the password hardcoded here. 
     This really should be ssh certificates instead and should only be used for testing like this-->
 
-    <machine name="$(arg robot_name)" address="$(arg robot_ip)" env-loader="/opt/ros/melodic/env.sh" user="ubuntu" password="SwarmBot"/>
+    
+    
 
-    <group ns="$(arg robot_name)">
-        
+    <arg name="robot_name" value="robot7" />
+    <arg name="robot_ip" value="192.168.0.117"/>
+    <arg name="robot_port" value="50051"/>
+    <group ns="robot7">
+        <machine name="$(arg robot_name)" address="$(arg robot_ip)" env-loader="/home/ubuntu/languageslam_ws/devel/env.sh" user="ubuntu" password="SwarmBot"/>
         <param name="robot_name"  value="$(arg robot_name)" />
         <param name="tf_prefix" value="$(arg robot_name)" />
 
         <include file="$(find languageslam)/launch/linorobot/one_robot.launch" >
             <arg name="robot_name"  value="$(arg robot_name)" />
-            <!--rebuild ip with port-->
-            <arg name="robot_ip"  value="$(eval arg('robot_ip') +  arg('robot_port'))" />
+            <arg name="machine"  value="$(arg robot_name)" />
+            <arg name="robot_ip"  value="192.168.0.117:50051" />
         </include>
     </group>
 

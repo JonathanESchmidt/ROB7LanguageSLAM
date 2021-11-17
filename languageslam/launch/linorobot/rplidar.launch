@@ -1,6 +1,7 @@
 <launch>
     <arg name="robot_name"/>
-    <node name="rplidar_node" pkg="rplidar_ros" type="rplidarNode" output="screen">
+    <arg name="machine"/>
+    <node machine="$(arg machine)" name="rplidar_node" pkg="rplidar_ros" type="rplidarNode" output="screen">
         <param name="serial_port" type="string" value="/dev/linolidar"/>
         <param name="serial_baudrate" type="int" value="256000"/>
         <param name="frame_id" type="string" value="$(arg robot_name)/laser"/>

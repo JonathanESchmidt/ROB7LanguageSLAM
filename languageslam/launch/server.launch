@@ -22,15 +22,15 @@
 
   </node-->
 
-  <node name="visualization" pkg="rviz" type="rviz" respawn="false"
+  <!--node name="visualization" pkg="rviz" type="rviz" respawn="false"
       output="screen"
       args="$(find languageslam)/config/rviz_config.rviz">
   </node>
 
   <node name="dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" 
       output="screen" 
-      args="--perspective-file $(find languageslam)/config/LanguageSLAM.perspective">
-  </node>
+      args="perspective-file $(find languageslam)/config/LanguageSLAM.perspective">
+  </node-->
 
 </group>
 </launch>

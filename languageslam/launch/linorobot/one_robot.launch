@@ -3,8 +3,10 @@
 
     <arg name="robot_name"/>
     <arg name="robot_ip"/>
+    <arg name="machine"/>
     <!-- Start ROS communication between the robot's computer and Linorobot base -->
-    <node pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
+    
+    <node machine="$(arg machine)" pkg="rosserial_python" name="rosserial_lino" type="serial_node.py" output="screen">
         <param name="port" value="/dev/ttyACM0" />
         <param name="baud" value="57600" />
         
@@ -12,20 +14,22 @@
     <include file="$(find languageslam)/launch/client.launch">
         <arg name="robot_name"  value="$(arg robot_name)" />
         <arg name="robot_ip"  value="$(arg robot_ip)" />
+        <arg name="machine"  value="$(arg machine)" />
     </include>
     <!-- IMU Relay and Filter -->
     <include file="$(find languageslam)/launch/linorobot/imu.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
+        <arg name="machine"  value="$(arg machine)" />
     </include>
 
     <!-- Publish Linorobot odometry -->
-    <node pkg="languageslam" name="lino_base_node" type="lino_base_node"></node>
+    <node machine="$(arg machine)" pkg="languageslam" name="lino_base_node" type="lino_base_node"></node>
 
     <!-- Publish static transform from base_footprint to base_link -->
-    <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.098 0 0 0  $(arg robot_name)/base_footprint $(arg robot_name)/base_link"/>
+    <node machine="$(arg machine)" pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.098 0 0 0  $(arg robot_name)/base_footprint $(arg robot_name)/base_link"/>
 
     <!-- Odom-IMU Extended Kalman Filter-->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+    <node machine="$(arg machine)" pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
         <remap from="odometry/filtered" to="odom" />
         <rosparam command="load" file="$(find languageslam)/config/linorobot/robot_localization.yaml" subst_value="true" />
     </node>
@@ -34,19 +38,21 @@
 
     <include file="$(find languageslam)/launch/linorobot/laser.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
+        <arg name="machine"  value="$(arg machine)" />
     </include>
     <!-- Run linorobot default lidar filter chain -->
 
-    <include file="$(find languageslam)/launch/linorobot/laser_conf_l.launch" >
+    <!--include file="$(find languageslam)/launch/linorobot/laser_conf_l.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
-    </include>
+    </include-->
 
 
 
-    <include file="$(find languageslam)/launch/linorobot/move_base_$(env LINOBASE).launch" >
+    <include file="$(find languageslam)/launch/linorobot/move_base_2wd.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
+        <arg name="machine"  value="$(arg machine)" />
     </include>
-    <node pkg="languageslam" type="map_converter.py" name="map_converter"/>
+    <node machine="$(arg machine)" pkg="languageslam" type="map_converter.py" name="map_converter"/>
     <!--include file="$(find languageslam)/launch/linorobot/explore.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />    
     </include-->

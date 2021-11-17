@@ -16,12 +16,13 @@ class robot:
 
         #generating object for robots.launch
         self.cli_args = ['languageslam', 'robots.launch', 'robot_name:='+self.robotname, 'robot_ip:='+self.address, 'robot_port:='+':50051']
-        self.launch_file = roslaunch.rlutil.resolve_launch_arguments(self.cli_args)
-        self.launch=roslaunch.parent.ROSLaunchParent(uuid, self.launch_file)
+        self.launch_file = roslaunch.rlutil.resolve_launch_arguments(self.cli_args)[0]
+        self.args = self.cli_args[2:]
+        self.launch=roslaunch.parent.ROSLaunchParent(uuid, [(self.launch_file,self.args)])
         '''TODO make and check namespace and machine tag in robots.launch autoadjusting moving the machine assignement to the launchfile makes this way easier'''
 
     def compareactive(self,value):
-        print(str(value))
+        print(self.address)
         if self.active != value:
             if value:
                 self.__initrobot()

@@ -1,6 +1,7 @@
 <launch>
   <arg name="robot_name"/>
   <arg name="robot_ip"/>
+  <arg name="machine"/>
   <env name="robot_name" value="$(arg robot_name)"/>
   <env name="robot_ip" value="$(arg robot_ip)"/>
     <!--env name="ROS_MASTER_URI" value="http://localhost:11311" /><only needed for running this all on the same machine>
@@ -9,9 +10,9 @@
 
 
 
-    <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
+    <node machine="$(arg machine)" name="cartographer_grpc_node_1" pkg="cartographer_ros"
       type="cartographer_grpc_node" args="
-          -configuration_directory $(find languageslam)/config
+          -configuration_directory /home/ubuntu/languageslam_ws/src/languageslam/config
           -configuration_basename client.lua
           -server_address $(arg robot_ip)
           -client_id $(arg robot_name)
@@ -23,13 +24,13 @@
     </node>
 
 
-    <node name="cartographer_grpc_server_1" pkg="cartographer_ros"
+    <node machine="$(arg machine)" name="cartographer_grpc_server_1" pkg="cartographer_ros"
         type="cartographer_grpc_server.sh" args="
-            -configuration_directory $(find languageslam)/config
+            -configuration_directory /home/ubuntu/languageslam_ws/src/languageslam/config
             -configuration_basename robot_1_server.lua
             ">
     </node>
-    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+    <node machine="$(arg machine)" name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
       type="cartographer_occupancy_grid_node" args="-resolution 0.05" >
       <remap from="map" to="cmap"/>
     </node>
