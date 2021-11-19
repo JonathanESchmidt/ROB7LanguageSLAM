@@ -1,5 +1,4 @@
 <launch>
-  <env name="robot_name" value="robot7"/>
 <group>
   <env name="ROS_MASTER_URI" value="http://localhost:11311" /><!--only needed for running this all on the same machine-->
 
