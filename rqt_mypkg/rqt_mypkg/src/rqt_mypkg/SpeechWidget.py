@@ -78,8 +78,17 @@ class App(QWidget):
         
         print(str(goal))
         if robotno==7:
-            self.client7.wait_for_server()
-            self.client7.send_goal(goal)
+            try:
+                client7 = actionlib.SimpleActionClient('/robot7/move_base', MoveBaseAction)
+                print("Client started")
+                client7.wait_for_server(rospy.Duration(10))
+            except:
+                print("Could not wait for sever")
+
+            try:
+                client7.send_goal(goal)
+            except:
+                print("Could not send goal")
         elif robotno==8:
             try:
                 client8 = actionlib.SimpleActionClient('/robot8/move_base', MoveBaseAction)
