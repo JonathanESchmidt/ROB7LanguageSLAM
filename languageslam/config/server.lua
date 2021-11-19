@@ -1,6 +1,6 @@
 include "map_builder.lua"
-
-MAP_BUILDER_SERVER = {
+include "trajectory_builder.lua"
+options = {
   map_builder = MAP_BUILDER,
   num_event_threads = 8,
   num_grpc_threads = 8,
@@ -11,6 +11,6 @@ MAP_BUILDER_SERVER = {
   enable_google_auth = false,
 }
 
-MAP_BUILDER_SERVER.use_trajectory_builder_2d = true
+MAP_BUILDER.use_trajectory_builder_2d = true
 
-return MAP_BUILDER_SERVER
+return options
