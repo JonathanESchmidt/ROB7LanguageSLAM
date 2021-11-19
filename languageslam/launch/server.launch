@@ -14,7 +14,7 @@
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
-          -server_address localhost:50100
+          -server_address 192.168.0.110:50100
           -client_id server
           "
           
