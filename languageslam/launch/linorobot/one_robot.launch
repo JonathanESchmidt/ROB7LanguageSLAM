@@ -13,7 +13,6 @@
     <include file="$(find languageslam)/launch/client.launch">
         <arg name="robot_name"  value="$(arg robot_name)" />
         <arg name="robot_ip"  value="$(arg robot_ip)" />
-        <arg name="machine"  value="$(arg machine)" />
     </include>
     <!-- IMU Relay and Filter -->
     <include file="$(find languageslam)/launch/linorobot/imu.launch" >
