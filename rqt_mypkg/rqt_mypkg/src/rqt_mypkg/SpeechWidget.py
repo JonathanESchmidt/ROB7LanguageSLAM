@@ -38,7 +38,7 @@ class App(QWidget):
         self.button.clicked.connect(self.on_click)
 
         layout = QGridLayout(self)
-        layout.addWidget(QLabel("Choose robots to control"),0,0)
+        layout.addWidget(QLabel("Choose robots to control"), 0, 0)
         layout.addWidget(self.check_robot7, 1, 0)
         layout.addWidget(self.check_robot8, 1, 1)
         layout.addWidget(self.button, 2, 0)
@@ -77,7 +77,7 @@ class App(QWidget):
         goal.target_pose.pose.orientation.w = orientation[3]
         
         print(str(goal))
-        if robotno==7:
+        if robotno == 7:
             try:
                 client7 = actionlib.SimpleActionClient('/robot7/move_base', MoveBaseAction)
                 print("Client started")
@@ -89,7 +89,7 @@ class App(QWidget):
                 client7.send_goal(goal)
             except:
                 print("Could not send goal")
-        elif robotno==8:
+        elif robotno == 8:
             try:
                 client8 = actionlib.SimpleActionClient('/robot8/move_base', MoveBaseAction)
                 print("Client started")
