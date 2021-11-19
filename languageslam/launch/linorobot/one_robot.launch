@@ -45,8 +45,7 @@
 
 
     <include file="$(find languageslam)/launch/linorobot/move_base_2wd.launch" >
-        <arg name="robot_name"  value="$(arg robot_name)" />    
-        <arg name="machine"  value="$(arg machine)" />
+        <arg name="robot_name"  value="$(arg robot_name)" /> 
     </include>
     <node pkg="languageslam" type="map_converter.py" name="map_converter"/>
     <!--include file="$(find languageslam)/launch/linorobot/explore.launch" >
