@@ -11,6 +11,6 @@ MAP_BUILDER_SERVER = {
   enable_google_auth = false,
 }
 
-MAP_BUILDER_SERVER.map_builder.use_trajectory_builder_2d = true
+MAP_BUILDER_SERVER.use_trajectory_builder_2d = true
 
 return MAP_BUILDER_SERVER
