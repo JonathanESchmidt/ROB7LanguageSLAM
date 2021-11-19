@@ -1,14 +1,12 @@
 
 <launch>
     <arg name="robot_name"/>
-    <arg name="machine"/>
     
     <!-- Run Linorobot compatible laser drivers. Takes reference from env var LINOLIDAR. ie. export LINOLIDAR=xv11 -->
     <include file="$(find languageslam)/launch/linorobot/rplidar.launch">
             <arg name="robot_name"  value="$(arg robot_name)" />
-            <arg name="machine"  value="$(arg machine)" />
     </include>
 
     <!-- Publish static transform of the laser. Define your sensor offset here -->
-    <node machine="$(arg machine)" pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser" args="0.065 0 0.098 4.712 0 0  /$(arg robot_name)/base_link /$(arg robot_name)/laser" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser" args="0.065 0 0.098 4.712 0 0  /$(arg robot_name)/base_link /$(arg robot_name)/laser" />
 </launch>
