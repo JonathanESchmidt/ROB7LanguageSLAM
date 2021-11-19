@@ -5,9 +5,9 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = robot_name .. "/base_footprint",
-  published_frame = robot_name .. "/odom",
-  odom_frame = robot_name .. "/odom",
+  tracking_frame = "/robot7/base_footprint",
+  published_frame = "/robot7/odom",
+  odom_frame = "/robot7/odom",
   provide_odom_frame = false,
   publish_frame_projected_to_2d = true,
   
