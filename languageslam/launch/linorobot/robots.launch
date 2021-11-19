@@ -9,8 +9,8 @@
     
     
 
-    <arg name="robot_name" value="robot7"/>
-    <arg name="robot_ip" value="192.168.0.117:50051"/>
+    <arg name="robot_name" value="$(env linoname)"/>
+    <arg name="robot_ip" value="$(env linoip)"/>
     <group ns="$(arg robot_name)">
         <param name="robot_name"  value="$(arg robot_name)" />
         <param name="tf_prefix" value="$(arg robot_name)" />
