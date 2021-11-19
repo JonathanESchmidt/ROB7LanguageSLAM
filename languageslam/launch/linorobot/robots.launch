@@ -9,18 +9,16 @@
     
     
 
-    <arg name="robot_name" value="robot7" />
-    <arg name="robot_ip" value="192.168.0.117"/>
-    <arg name="robot_port" value="50051"/>
-    <group ns="robot7">
-        <machine name="$(arg robot_name)" address="$(arg robot_ip)" env-loader="/home/ubuntu/languageslam_ws/devel/env.sh" user="ubuntu" password="SwarmBot"/>
+    <arg name="robot_name"/>
+    <arg name="robot_ip"/>
+    <group ns="$(arg robot_name)">
         <param name="robot_name"  value="$(arg robot_name)" />
         <param name="tf_prefix" value="$(arg robot_name)" />
 
         <include file="$(find languageslam)/launch/linorobot/one_robot.launch" >
             <arg name="robot_name"  value="$(arg robot_name)" />
             <arg name="machine"  value="$(arg robot_name)" />
-            <arg name="robot_ip"  value="192.168.0.117:50051" />
+            <arg name="robot_ip"  value="$(arg robot_ip)" />
         </include>
     </group>
 
