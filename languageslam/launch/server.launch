@@ -15,7 +15,6 @@
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
           -server_address 192.168.0.110:50100
-          -client_id server
           "
           
       output="screen">
