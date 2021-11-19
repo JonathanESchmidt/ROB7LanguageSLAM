@@ -10,7 +10,7 @@
           ">
   </node>
   
- <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
+ <!--node name="cartographer_grpc_node_1" pkg="cartographer_ros"
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
           -configuration_basename client.lua
@@ -26,7 +26,7 @@
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
       type="cartographer_occupancy_grid_node" args="-resolution 0.05" >
       <remap from="map" to="servermap"/>
-  </node>
+  </node-->
 </group>
 </launch>
 
