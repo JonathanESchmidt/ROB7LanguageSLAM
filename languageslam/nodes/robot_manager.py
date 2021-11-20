@@ -40,6 +40,7 @@ class robot:
     #private methods These should never be called directly because I have no idea what happens if you kill a dead node or launch a live one
     def __initrobot(self):
         try:
+            
             self.launch.start()
         except Exception as e:
             print("Init of " + str(self.robotname) + " failed because "+ str(e))
@@ -90,6 +91,6 @@ class robot_manager:
 
 if __name__=="__main__":
 
-    rospy.init_node('robot_manager', anonymous=False)
+    rospy.init_node('robot_manager', anonymous=False, disable_signals=True)
     robotmanager=robot_manager()
     rospy.spin()
