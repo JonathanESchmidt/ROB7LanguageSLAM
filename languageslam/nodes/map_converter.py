@@ -29,8 +29,8 @@ def callback(cmap):
 
 
 rospy.init_node('mapc_node', anonymous=True)
-sub = rospy.Subscriber(ns+'/cmap', OccupancyGrid, callback)
-pub = rospy.Publisher(ns+'/map', OccupancyGrid, queue_size=20)
+sub = rospy.Subscriber(ns+'cmap', OccupancyGrid, callback)
+pub = rospy.Publisher(ns+'map', OccupancyGrid, queue_size=20)
 
 rospy.spin()
 
