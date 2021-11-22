@@ -34,7 +34,7 @@
     <!-- start trajectory without using initial pose at 0,0 -->
     <node pkg="rosservice" type="rosservice" name="rosservice" args="
       call /$(arg robot_name)/start_trajectory
-        -use_initial_pose=false"
+        use_initial_pose=false"
     />
 
 
