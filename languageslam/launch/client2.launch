@@ -33,7 +33,7 @@
 
 
       <node pkg="rosservice" type="rosservice" name="rosservice" args="
-      call /$(arg robot_name)/start_trajectory ['/home/languageslam_ws/src/languageslam/config' 'client.lua' 0 0 0 0 0 0 0 0 0]"/>
+      call /$(arg robot_name)/start_trajectory ['/home/languageslam_ws/src/languageslam/config','client.lua', 0, 0, 0, 0, 0, 0, 0, 0, 0]"/>
 
 
 </launch>
