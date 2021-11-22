@@ -35,13 +35,13 @@
       <node pkg="rosservice" type="rosservice" name="rosservice" args="
       call /$(arg robot_name)/start_trajectory
         [
-        -configuration_directory: '/home/languageslam_ws/src/languageslam/config'
-        -configuration_basename: 'client.lua'
-        -use_initial_pose: false
-        -initial_pose:
+        configuration_directory: '/home/languageslam_ws/src/languageslam/config'
+        configuration_basename: 'client.lua'
+        use_initial_pose: false
+        initial_pose:
           position: {x: 0.0, y: 0.0, z: 0.0}
           orientation: {x: 0.0, y: 0.0, z: 0.0, w: 0.0}
-        -relative_to_trajectory_id: 0]"
+        relative_to_trajectory_id: 0]"
     />
 
 
