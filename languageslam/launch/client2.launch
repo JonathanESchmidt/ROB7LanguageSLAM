@@ -38,7 +38,7 @@
         '/home/languageslam_ws/src/languageslam/config',
         'client.lua',
         false,
-        [{x: 0.0, y: 0.0, z: 0.0},{x: 0.0, y: 0.0, z: 0.0, w: 0.0}],
+        [{0.0,0.0,0.0},{0.0,0.0,0.0,0.0}],
         0"
     />
       <!--node pkg="rosservice" type="rosservice" name="rosservice" args="
