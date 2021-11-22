@@ -1,0 +1,22 @@
+  <launch>
+
+    <!--configure machine for ssh access so we can launch these from the master on the robot-->
+    <!--I think its highly disgusting to use the password hardcoded here. 
+    This really should be ssh certificates instead and should only be used for testing like this-->
+
+    
+    
+
+    <arg name="robot_name" value="$(env linoname)"/>
+    <arg name="robot_ip" value="$(env linoip)"/>
+    <group ns="$(arg robot_name)">
+        <param name="robot_name"  value="$(arg robot_name)" />
+        <param name="tf_prefix" value="$(arg robot_name)" />
+
+        <include file="$(find languageslam)/launch/linorobot/secone_robot.launch" >
+            <arg name="robot_name"  value="$(arg robot_name)" />
+            <arg name="robot_ip"  value="$(arg robot_ip)" />
+        </include>
+    </group>
+
+  </launch>
