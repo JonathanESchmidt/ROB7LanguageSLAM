@@ -3,36 +3,27 @@
   <arg name="robot_ip"/>
   <env name="robot_name" value="$(arg robot_name)"/>
   <env name="robot_ip" value="$(arg robot_ip)"/>
-    
-    <!-- start cartographer node without trajectory -->
-    <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
-      type="cartographer_grpc_node" args="
+
+  <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
+    type="cartographer_grpc_node" args="
+        -configuration_directory $(find languageslam)/config
+        -configuration_basename localization_only.lua
+        -server_address $(arg robot_ip)
+        -client_id $(arg robot_name)
+        -load_state_filename=/home/ubuntu/map.pbstream
+        "
+    output="screen">
+  </node>
+
+
+  <node name="cartographer_grpc_server_1" pkg="cartographer_ros"
+      type="cartographer_grpc_server.sh" args="
           -configuration_directory $(find languageslam)/config
-          -configuration_basename client.lua
-          -server_address $(arg robot_ip)
-          -client_id $(arg robot_name)
-          -start_trajectory_with_default_topics=false
-          "
-          
-      output="screen">
-      <remap from="/$(arg robot_name)/scan" to="scan"/>
-      <remap from="/$(arg robot_name)/raw_odom" to="odom"/>
-    </node>
-
-
-    <node name="cartographer_grpc_server_1" pkg="cartographer_ros"
-        type="cartographer_grpc_server.sh" args="
-            -configuration_directory $(find languageslam)/config
-            -configuration_basename robot_1_server.lua
-            ">
-    </node>
-    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-      type="cartographer_occupancy_grid_node" args="-resolution 0.05" >
-      <remap from="map" to="cmap"/>
-    </node>
-
-
-      <node pkg="rosservice" type="rosservice" name="rosservice" args="
-      call /$(arg robot_name)/start_trajectory '/home/ubuntu/languageslam_ws/src/languageslam/config' 'client.lua' false [[0,0,0],[0,0,0,0]] 0"/>
+          -configuration_basename robot_1_server.lua
+          ">
+  </node>
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+    type="cartographer_occupancy_grid_node" args="-resolution 0.05" >
+    <remap from="map" to="cmap"/>
+  </node>
 </launch>
-
