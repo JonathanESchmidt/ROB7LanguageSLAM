@@ -18,7 +18,10 @@
         "
     output="screen">
   </node>
-
+  <node name="dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" 
+      output="screen" 
+      args="--perspective-file $(find languageslam)/config/LanguageSLAM.perspective">
+  </node>
   <node name="rviz_cloud" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_ros)/configuration_files/demo-cloud.rviz" />
   
