@@ -43,7 +43,4 @@ TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.linear_search_window = 
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.translation_delta_cost_weight = 10.
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.rotation_delta_cost_weight = 1e-1
 
-POSE_GRAPH.optimization_problem.huber_scale = 1e2
-POSE_GRAPH.optimize_every_n_nodes = 0
-POSE_GRAPH.constraint_builder.min_score = 0.65
 return options
