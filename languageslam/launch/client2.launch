@@ -10,7 +10,7 @@
         -configuration_basename localization_only.lua
         -server_address $(arg robot_ip)
         -client_id $(arg robot_name)
-        -load_state_filename map.pbstream
+        -load_state_filename home/ubuntu/map.pbstream
         "
     output="screen">
   </node>
