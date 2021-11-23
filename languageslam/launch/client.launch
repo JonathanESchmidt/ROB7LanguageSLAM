@@ -7,16 +7,13 @@
     <node name="playbag_1" pkg="rosbag" type="play"
       args="clock $(env HOME)/Downloads/ROSbags/1210bag3.bag" /-->
 
-
-
     <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
-          -configuration_basename localization_only.lua
+          -configuration_basename client.lua
           -server_address $(arg robot_ip)
           -client_id $(arg robot_name)
           "
-          
       output="screen">
     </node>
 

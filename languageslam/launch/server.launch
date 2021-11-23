@@ -1,7 +1,7 @@
 <launch>
 <group>
 <!--only needed for running this all on the same machine-->
-    <env name="robot_name" value="robot7"/>
+    <env name="robot_name" value=""/>
   <node name="cartographer_grpc_server_3" pkg="cartographer_ros"
       type="cartographer_grpc_server.sh" args="
           -configuration_directory $(find languageslam)/config
