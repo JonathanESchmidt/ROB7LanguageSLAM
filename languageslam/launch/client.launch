@@ -12,7 +12,7 @@
     <node name="cartographer_grpc_node_1" pkg="cartographer_ros"
       type="cartographer_grpc_node" args="
           -configuration_directory $(find languageslam)/config
-          -configuration_basename client.lua
+          -configuration_basename localization_only.lua
           -server_address $(arg robot_ip)
           -client_id $(arg robot_name)
           "
