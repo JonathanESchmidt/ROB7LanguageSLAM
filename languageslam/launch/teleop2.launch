@@ -1,3 +1,4 @@
 <launch>
+    <remap from="/robot8/cmd_vel" to="/cmd_vel"/>
     <node name="tele2" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" />
 </launch>
