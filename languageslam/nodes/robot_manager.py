@@ -6,8 +6,7 @@ import signal
 
 # TODO create callback functions on service
 class robot:
-    def __init__(self,uuid,robotno):
-        self.active=False
+    def __init__(self,robotno):
         self.explore=False
         self.robotno=robotno
         self.address='192.168.0.11'+str(robotno)
@@ -17,15 +16,18 @@ class robot:
 
     def startExplore(self):
         # TODO add explore launchfile
-        self.child = subprocess.Popen(["roslaunch","turtlebot3_gazebo","turtlebot3_house.launch"])
-        print("parent process")
-        print(self.child.poll())
+        if not self.explore:
+            self.child = subprocess.Popen(["roslaunch","turtlebot3_gazebo","turtlebot3_house.launch"])
+            print("parent process")
+            print(self.child.poll())
 
-        rospy.loginfo('The PID of child: %d', self.child.pid)
-        print ("The PID of child:", self.child.pid)
+            rospy.loginfo('The PID of child: %d', self.child.pid)
+            print ("The PID of child:", self.child.pid)
+            self.explore=True
 
     def killExplore(self):
-        self.child.send_signal(signal.SIGINT) #You may also use .terminate() method
+        if self.explore:
+            self.child.send_signal(signal.SIGINT) #You may also use .terminate() method
 
 #for more: https://docs.python.org/2/library/subprocess.html
 
