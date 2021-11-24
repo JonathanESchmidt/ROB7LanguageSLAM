@@ -19,7 +19,6 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   nav_msgs
   dynamic_reconfigure
-  cartographer_ros_messages
 )
 
 ## System dependencies are found with CMake's conventions
