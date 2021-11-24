@@ -4,7 +4,7 @@ import rospy
 import subprocess
 import signal
 
-from toggleexploration.srv import toogleexploration, toogleexplorationResponse
+from languageslam.srv import toggleexploration, toggleexplorationResponse
 
 # TODO create callback functions on service
 class robot:
@@ -15,12 +15,14 @@ class robot:
         self.robotname='robot'+str(robotno)
         
 
-        self.service=rospy.Service('toogleexploration',toogleexploration,self.handle_exploration_srv)
+        self.service=rospy.Service('toogleexploration',toggleexploration,self.handle_exploration_srv)
     
 
     def handle_exploration_srv(self,req):
         if req.state: self.startExplore
         else: self.killExplore
+
+        return True #this should be a verdict if the launch/kill was successfull
     # TODO add callback function with service
 
     def startExplore(self):
@@ -39,8 +41,10 @@ class robot:
             self.child.send_signal(signal.SIGINT) #You may also use .terminate() method
 
 #for more: https://docs.python.org/2/library/subprocess.html
-
-
+if __name__=="__main__":
+    rospy.init_node('robot_manager')
+    bot=robot(7)
+    rospy.spin()
 
 '''
 import roslaunch
