@@ -1,6 +1,37 @@
 #!/usr/bin/env python
 
+import rospy
+import subprocess
+import signal
 
+# TODO create callback functions on service
+class robot:
+    def __init__(self,uuid,robotno):
+        self.active=False
+        self.explore=False
+        self.robotno=robotno
+        self.address='192.168.0.11'+str(robotno)
+        self.robotname='robot'+str(robotno)
+    
+    # TODO add callback function with service
+
+    def startExplore(self):
+        # TODO add explore launchfile
+        self.child = subprocess.Popen(["roslaunch","turtlebot3_gazebo","turtlebot3_house.launch"])
+        print("parent process")
+        print(self.child.poll())
+
+        rospy.loginfo('The PID of child: %d', self.child.pid)
+        print ("The PID of child:", self.child.pid)
+
+    def killExplore(self):
+        self.child.send_signal(signal.SIGINT) #You may also use .terminate() method
+
+#for more: https://docs.python.org/2/library/subprocess.html
+
+
+
+'''
 import roslaunch
 import rospy
 from dynamic_reconfigure.server import Server
@@ -19,7 +50,7 @@ class robot:
         self.launch_file = roslaunch.rlutil.resolve_launch_arguments(self.cli_args)[0]
         self.args = self.cli_args[2:]
         self.launch=roslaunch.parent.ROSLaunchParent(uuid, [(self.launch_file,self.args)])
-        '''TODO make and check namespace and machine tag in robots.launch autoadjusting moving the machine assignement to the launchfile makes this way easier'''
+        #TODO make and check namespace and machine tag in robots.launch autoadjusting moving the machine assignement to the launchfile makes this way easier
 
     def compareactive(self,value):
         print(self.address)
@@ -94,3 +125,4 @@ if __name__=="__main__":
     rospy.init_node('robot_manager', anonymous=False, disable_signals=True)
     robotmanager=robot_manager()
     rospy.spin()
+'''
