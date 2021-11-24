@@ -98,10 +98,10 @@ class robot:
         else:
             self.active=False
 
-    def __initexplore(self):
-        '''placeholder'''
-    def __killexplore(self):
-        '''placeholder'''
+    # def __initexplore(self):
+    #     placeholder
+    # def __killexplore(self):
+    #     placeholder
 
 
 
