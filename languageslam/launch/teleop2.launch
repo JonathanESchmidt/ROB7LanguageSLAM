@@ -1,4 +1,4 @@
 <launch>
     <remap from="/cmd_vel" to="/robot8/cmd_vel"/>
-    <node name="tele1" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen"/>
+    <node name="tele2" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen"/>
 </launch>
