@@ -4,6 +4,8 @@ import rospy
 import subprocess
 import signal
 
+from toggleexploration.srv import toogleexploration, toogleexplorationResponse
+
 # TODO create callback functions on service
 class robot:
     def __init__(self,robotno):
@@ -11,7 +13,14 @@ class robot:
         self.robotno=robotno
         self.address='192.168.0.11'+str(robotno)
         self.robotname='robot'+str(robotno)
+        
+
+        self.service=rospy.Service('toogleexploration',toogleexploration,self.handle_exploration_srv)
     
+
+    def handle_exploration_srv(self,req):
+        if req.state: self.startExplore
+        else: self.killExplore
     # TODO add callback function with service
 
     def startExplore(self):

@@ -1,0 +1,4 @@
+[languageslam/toogleexploration]:
+int64 state
+---
+int64 verdict
