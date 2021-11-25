@@ -7,12 +7,8 @@ import signal
 from languageslam.srv import toggleexploration, toggleexplorationResponse
 
 class robot:
-    def __init__(self,robotno):
+    def __init__(self):
         self.explore=False
-        self.robotno=robotno
-        self.address='192.168.0.11'+str(robotno)
-        self.robotname='robot'+str(robotno)
-        
         self.service=rospy.Service('toogleexploration',toggleexploration,self.handle_exploration_srv)
     
 
