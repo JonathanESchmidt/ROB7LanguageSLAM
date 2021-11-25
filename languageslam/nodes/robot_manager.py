@@ -6,7 +6,6 @@ import signal
 
 from languageslam.srv import toggleexploration, toggleexplorationResponse
 
-# TODO create callback functions on service
 class robot:
     def __init__(self,robotno):
         self.explore=False
@@ -23,7 +22,7 @@ class robot:
         else: self.killExplore
 
         return True #this should be a verdict if the launch/kill was successfull
-    # TODO add callback function with service
+    
 
     def startExplore(self):
         # TODO add explore launchfile
@@ -39,6 +38,7 @@ class robot:
     def killExplore(self):
         if self.explore:
             self.child.send_signal(signal.SIGINT) #You may also use .terminate() method
+            self.explore=False
 
 #for more: https://docs.python.org/2/library/subprocess.html
 if __name__=="__main__":
