@@ -9,7 +9,7 @@ from languageslam.srv import toggleexploration, toggleexplorationResponse
 class robot:
     def __init__(self):
         self.explore=False
-        self.service=rospy.Service('toogleexploration',toggleexploration,self.handle_exploration_srv)
+        self.service=rospy.Service('toggleexploration',toggleexploration,self.handle_exploration_srv)
     
 
     def handle_exploration_srv(self,req):
