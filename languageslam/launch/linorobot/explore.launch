@@ -1,6 +1,5 @@
 <launch>
-  <arg name="robot_name"/>
-  <group ns="$(arg robot_name)">
+  <group ns="$(env linoname)">
     <node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
       <param name="robot_base_frame" value="base_link"/>
       <param name="costmap_topic" value="/$(arg robot_name)/map"/>
