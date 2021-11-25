@@ -38,5 +38,5 @@ class robot:
 #for more: https://docs.python.org/2/library/subprocess.html
 if __name__=="__main__":
     rospy.init_node('robot_manager')
-    bot=robot(7)
+    bot=robot()
     rospy.spin()
