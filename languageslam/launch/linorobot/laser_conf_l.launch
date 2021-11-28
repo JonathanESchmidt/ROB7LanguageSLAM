@@ -2,7 +2,7 @@
   <arg name="robot_name"/>
   <node pkg="laser_filters" type="scan_to_scan_filter_chain"
       name="laser_filter">
-    <rosparam command="load" file="$(find linorobot)param/laser_config.yaml" />
-    <remap from="scan" to="$(arg robot_name)/scan" />
+    <rosparam command="load" file="$(find languageslam)/config/linorobot/laser_filter.yaml" />
+    <remap from="/scan" to="/$(arg robot_name)/scan" />
   </node>
 </launch>
