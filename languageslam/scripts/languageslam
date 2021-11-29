@@ -2,7 +2,7 @@
 
 import sys
 
-from languageslam.my_module import MyPlugin
+from my_module import MyPlugin
 from rqt_gui.main import Main
 
 plugin = 'languageslam'
