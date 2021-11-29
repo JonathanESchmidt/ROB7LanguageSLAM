@@ -15,7 +15,7 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Quaternion
 from tf.transformations import quaternion_from_euler
 
-from languageslam.srv import *
+from languageslam.srv import toggleexploration
 
 class App(QWidget):
 
@@ -56,8 +56,8 @@ class App(QWidget):
     def exploration_client(self,robotname,state):
         rospy.wait_for_service('/'+robotname + '/toggleexploration')
         try:
-            toggleexploration = rospy.ServiceProxy('/'+robotname + '/toggleexploration', toggleexploration)
-            resp1 = toggleexploration(state)
+            exploration = rospy.ServiceProxy('/'+robotname + '/toggleexploration', toggleexploration)
+            resp1 = exploration(state)
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
