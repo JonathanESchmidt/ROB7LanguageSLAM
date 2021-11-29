@@ -56,10 +56,12 @@ class App(QWidget):
     def exploration_client(self,robotname,state):
         rospy.wait_for_service('/'+robotname + '/toggleexploration')
         try:
-            add_two_ints = rospy.ServiceProxy('/'+robotname + '/toggleexploration', toggleexploration)
+            toggleexploration = rospy.ServiceProxy('/'+robotname + '/toggleexploration', toggleexploration)
             resp1 = toggleexploration(state)
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
+
+
     def moverobot(self, robotno, move):
         
         if move == 'left':
