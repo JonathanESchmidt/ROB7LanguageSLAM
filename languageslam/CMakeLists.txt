@@ -88,7 +88,8 @@ generate_messages(
   actionlib_msgs
   move_base_msgs
   geometry_msgs
-  std_msgs nav_msgs
+  std_msgs
+  nav_msgs
 )
 
 ################################################
