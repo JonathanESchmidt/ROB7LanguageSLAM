@@ -121,7 +121,7 @@ class App(QWidget):
                 text = str(text)
                 print(text)
             except:
-                pass
+                print("No response from Google")
         
         if text != '':
             # if any words are recognised convert and extract commands
