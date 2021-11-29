@@ -114,7 +114,6 @@ class App(QWidget):
         with sr.Microphone() as source:
             # read the audio data from the default microphone'
             audio_data = self.r.listen(source)
-            print("Listened to sound")
 
             try:
                 text = self.r.recognize_google(audio_data)
@@ -188,22 +187,7 @@ class App(QWidget):
 
 
             self.label.setText(output)
-            '''
-            # TODO add commands to multiple robots
-            if self.check_robot7.isChecked() and self.check_robot8.isChecked():
-                self.label2.setText("Sending command to robot 7 and robot 8")
-                self.moverobot(7, move)
-                self.moverobot(8, move)
-            elif self.check_robot7.isChecked():
-                self.label2.setText("Sending command to robot 7")
-                self.moverobot(7, move)
-            elif self.check_robot8.isChecked():
-                self.label2.setText("Sending command to robot 8")
-                self.moverobot(8, move)
-            else:
-                self.label2.setText("No robot selected. Command not sent")
-'''
-
+            
 if __name__ == '__main__':
     
     app = QApplication(sys.argv)
