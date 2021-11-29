@@ -114,10 +114,12 @@ class App(QWidget):
         with sr.Microphone() as source:
             # read the audio data from the default microphone'
             audio_data = self.r.listen(source)
+            print("Listened to sound")
 
             try:
                 text = self.r.recognize_google(audio_data)
                 text = str(text)
+                print(text)
             except:
                 pass
         
@@ -149,8 +151,10 @@ class App(QWidget):
                 try:
                     move = set(self.movements).intersection(stems)
                     move = str(list(move)[0])
+                    print(move)
                 except:
                     move = None
+                    print("No move")
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
@@ -170,6 +174,7 @@ class App(QWidget):
                             self.label2.setText("No robot selected. Command not sent")
                     else:
                          output = "Command not recognised: Missing direction"
+                         print("No direction")
 
             
             elif command[0] == "explore":
