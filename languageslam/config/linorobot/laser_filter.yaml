@@ -2,7 +2,17 @@ scan_filter_chain:
 - name: shadows
   type: laser_filters/ScanShadowsFilter
   params:
-    min_angle: 10
-    max_angle: 170
+    min_angle: 0
+    max_angle: 360
     neighbors: 20
     window: 1
+
+scan_filter_chain:
+- name: range
+  type: laser_filters/LaserScanRangeFilter
+  params:
+    use_message_range_limits: false
+    lower_threshold: 0.35
+    upper_threshold: .inf
+    lower_replacement_value: -.inf
+    upper_replacement_value: .inf
