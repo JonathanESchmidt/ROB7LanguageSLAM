@@ -15,6 +15,8 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Quaternion
 from tf.transformations import quaternion_from_euler
 
+from languageslam.srv import *
+
 class App(QWidget):
 
     def __init__(self):
@@ -51,7 +53,13 @@ class App(QWidget):
         
         self.show()
 
-  
+    def exploration_client(self,robotname,state):
+        rospy.wait_for_service('/'+robotname + '/toggleexploration')
+        try:
+            add_two_ints = rospy.ServiceProxy('/'+robotname + '/toggleexploration', toggleexploration)
+            resp1 = toggleexploration(state)
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
     def moverobot(self, robotno, move):
         
         if move == 'left':
@@ -177,6 +185,12 @@ class App(QWidget):
 
             
             elif command[0] == "explore":
+                if self.check_robot7.isChecked():
+                    self.label2.setText("Starting exploration on robot 7")
+                    self.exploration_client('robot7', 1)
+                elif self.check_robot8.isChecked():
+                    self.label2.setText("Starting exploration on robot 8")
+                    self.exploration_client('robot7', 1)
                 #TODO add function to launch exploration
                 output = "Command recognised. Exploring"
 
