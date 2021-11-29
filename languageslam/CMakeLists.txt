@@ -30,7 +30,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+catkin_python_setup()
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -132,7 +132,7 @@ catkin_package(
   DEPENDS system_lib
 )
 
-catkin_python_setup()
+
 ###########
 ## Build ##
 ###########
