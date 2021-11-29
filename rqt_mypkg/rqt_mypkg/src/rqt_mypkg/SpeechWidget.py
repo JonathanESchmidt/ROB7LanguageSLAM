@@ -150,19 +150,22 @@ class App(QWidget):
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
-                    output = "Command recognised: Moving " + move
-                    if self.check_robot7.isChecked() and self.check_robot8.isChecked():
-                        self.label2.setText("Sending command to robot 7 and robot 8")
-                        self.moverobot(7, move)
-                        self.moverobot(8, move)
-                    elif self.check_robot7.isChecked():
-                        self.label2.setText("Sending command to robot 7")
-                        self.moverobot(7, move)
-                    elif self.check_robot8.isChecked():
-                        self.label2.setText("Sending command to robot 8")
-                        self.moverobot(8, move)
+                    if len(move) == 1:
+                        output = "Command recognised: Moving " + move
+                        if self.check_robot7.isChecked() and self.check_robot8.isChecked():
+                            self.label2.setText("Sending command to robot 7 and robot 8")
+                            self.moverobot(7, move)
+                            self.moverobot(8, move)
+                        elif self.check_robot7.isChecked():
+                            self.label2.setText("Sending command to robot 7")
+                            self.moverobot(7, move)
+                        elif self.check_robot8.isChecked():
+                            self.label2.setText("Sending command to robot 8")
+                            self.moverobot(8, move)
+                        else:
+                            self.label2.setText("No robot selected. Command not sent")
                     else:
-                        self.label2.setText("No robot selected. Command not sent")
+                         output = "Command not recognised: Missing direction"
 
             
             elif command[0] == "explore":
