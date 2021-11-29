@@ -20,6 +20,12 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   dynamic_reconfigure
   message_generation
+  rqt_gui
+  rqt_gui_py
+  actionlib_msgs 
+  actionlib
+  move_base_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -79,6 +85,10 @@ add_service_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
+  actionlib_msgs
+  move_base_msgs
+  geometry_msgs
+  std_msgs nav_msgs
 )
 
 ################################################
@@ -168,6 +178,21 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 #############
 ## Install ##
 #############
+
+install(PROGRAMS
+  scripts/rqt_mypkg
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY
+  resource
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(FILES
+  plugin.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
