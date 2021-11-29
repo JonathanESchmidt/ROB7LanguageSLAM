@@ -35,7 +35,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-catkin_python_setup()
+
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -127,6 +127,7 @@ catkin_package(
   DEPENDS system_lib
 )
 
+catkin_python_setup()
 ###########
 ## Build ##
 ###########
@@ -143,9 +144,6 @@ add_executable(lino_base_node src/lino_base_node.cpp)
 target_link_libraries(lino_base_node lino_base ${catkin_LIBRARIES})
 add_dependencies(lino_base lino_msgs_generate_messages_cpp)
 
-catkin_install_python(PROGRAMS nodes/robot_manager.py nodes/map_converter.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -179,10 +177,9 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 #############
 ## Install ##
 #############
-
-install(PROGRAMS
-  scripts/languageslam
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+install(FILES
+  plugin.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
 install(DIRECTORY
@@ -190,10 +187,18 @@ install(DIRECTORY
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-install(FILES
-  plugin.xml
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+install(PROGRAMS
+  scripts/languageslam
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+
+catkin_install_python(PROGRAMS nodes/robot_manager.py nodes/map_converter.py scripts/languageslam
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
+
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
