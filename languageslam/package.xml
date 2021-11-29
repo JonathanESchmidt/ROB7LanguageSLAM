@@ -91,6 +91,6 @@
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
-    <rqt_gui plugin="plugin.xml"/>
+    <rqt_gui plugin="${PREFIX}/plugin.xml"/>
   </export>
 </package>
