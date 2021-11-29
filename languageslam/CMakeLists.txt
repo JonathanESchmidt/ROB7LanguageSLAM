@@ -180,7 +180,7 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 #############
 
 install(PROGRAMS
-  scripts/rqt_mypkg
+  scripts/languageslam
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
