@@ -5,7 +5,7 @@
       "keys": {
         "running-plugins": {
           "type": "repr",
-          "repr": "{u'rqt_robot_steering/RobotSteering': [2, 1], u'rqt_mypkg/My Plugin': [1]}"
+          "repr": "{u'rqt_robot_steering/RobotSteering': [2, 1], u'languageslam/My Plugin': [1]}"
         }
       },
       "groups": {
