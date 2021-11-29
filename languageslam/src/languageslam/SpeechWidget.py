@@ -154,7 +154,7 @@ class App(QWidget):
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
-                    if len(move) == 1:
+                    if move != None:
                         output = "Command recognised: Moving " + move
                         if self.check_robot7.isChecked() and self.check_robot8.isChecked():
                             self.label2.setText("Sending command to robot 7 and robot 8")
