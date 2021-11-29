@@ -145,8 +145,12 @@ class App(QWidget):
             if command[0] == "stop":
                 output = "Command recognised: Stopping"
             elif command[0] == "move":
-                move = set(self.movements).intersection(stems)
-                move = str(list(move)[0])
+
+                try:
+                    move = set(self.movements).intersection(stems)
+                    move = str(list(move)[0])
+                except:
+                    move = None
                 if len(command) != 1:
                     output = "Command not recognised. Please try again."
                 else:
