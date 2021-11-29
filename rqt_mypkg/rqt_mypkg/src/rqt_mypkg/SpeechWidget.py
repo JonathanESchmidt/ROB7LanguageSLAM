@@ -163,6 +163,7 @@ class App(QWidget):
                             self.label2.setText("Sending command to robot 8")
                             self.moverobot(8, move)
                         else:
+                            print("No robot?")
                             self.label2.setText("No robot selected. Command not sent")
                     else:
                          output = "Command not recognised: Missing direction"
