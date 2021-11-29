@@ -81,6 +81,11 @@ add_service_files(
 #   Action2.action
 # )
 
+
+catkin_install_python(PROGRAMS nodes/robot_manager.py nodes/map_converter.py scripts/languageslam
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
@@ -193,9 +198,6 @@ install(PROGRAMS
 )
 
 
-catkin_install_python(PROGRAMS nodes/robot_manager.py nodes/map_converter.py scripts/languageslam
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
 
 
 
