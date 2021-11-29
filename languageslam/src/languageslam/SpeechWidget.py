@@ -185,13 +185,17 @@ class App(QWidget):
 
             
             elif command[0] == "explore":
+                print("Went to exploration")
+
                 if self.check_robot7.isChecked():
                     self.label2.setText("Starting exploration on robot 7")
                     self.exploration_client('robot7', 1)
+                    print("Exploration7 going")
+
                 elif self.check_robot8.isChecked():
                     self.label2.setText("Starting exploration on robot 8")
-                    self.exploration_client('robot7', 1)
-                #TODO add function to launch exploration
+                    self.exploration_client('robot8', 1)
+                    print("Exploration8 going")
                 output = "Command recognised. Exploring"
 
             elif command[0] == "go":
