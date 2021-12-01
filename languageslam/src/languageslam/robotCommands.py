@@ -13,8 +13,8 @@ class robot_command():
         self.robotname = "robot" + str(robotno)
 
     def exploration_client(self, state):
-        rospy.wait_for_service('/'+ self.robotname + '/toggleexploration')
         try:
+            rospy.wait_for_service('/'+ self.robotname + '/toggleexploration', timeout=2)
             exploration = rospy.ServiceProxy('/'+ self.robotname + '/toggleexploration', toggleexploration)
             resp1 = exploration(state)
         except rospy.ServiceException as e:
@@ -55,3 +55,13 @@ class robot_command():
         except:
             print("Could not wait for sever")
 
+    def stoprobot(self):
+        self.exploration_client(0)
+
+        try:
+            self.client = actionlib.SimpleActionClient('/' + self.robotname + '/move_base', MoveBaseAction)
+            print("Client started")
+            self.client.wait_for_server(rospy.Duration(1))
+            self.client.cancel_all_goals()
+        except:
+            print("Could not stop robot")
