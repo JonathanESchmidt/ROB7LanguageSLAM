@@ -62,6 +62,6 @@ class robot_command():
             self.client = actionlib.SimpleActionClient('/' + self.robotname + '/move_base', MoveBaseAction)
             print("Client started")
             self.client.wait_for_server(rospy.Duration(1))
-            self.client.cancel_goal()
+            self.client.cancel_all_goals()
         except:
             print("Could not stop robot")
