@@ -149,6 +149,7 @@ class App(QWidget):
                 self.label.setText(output)
         else:
             self.label2.setText("No robot selected. Command not sent")
+            self.label.setText("")
             
 if __name__ == '__main__':
     
