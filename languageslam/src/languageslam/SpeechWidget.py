@@ -82,10 +82,10 @@ class App(QWidget):
         layout.addWidget(self.label2, 4, 0)
         layout.addWidget(self.buttonStop, 5, 0)
         layout.addWidget(self.buttonExplore, 5, 1)
-        layout.addWidget(self.buttonMoveL, 6, 0)
-        layout.addWidget(self.buttonMoveF, 6, 1)
-        layout.addWidget(self.buttonMoveB, 6, 2)
-        layout.addWidget(self.buttonMoveR, 6, 3)
+        # layout.addWidget(self.buttonMoveL, 6, 0)
+        # layout.addWidget(self.buttonMoveF, 6, 1)
+        # layout.addWidget(self.buttonMoveB, 6, 2)
+        # layout.addWidget(self.buttonMoveR, 6, 3)
 
         self.show()
 
