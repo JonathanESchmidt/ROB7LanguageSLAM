@@ -45,17 +45,13 @@ class robot_command():
         goal.target_pose.pose.orientation.z = orientation[2]
         goal.target_pose.pose.orientation.w = orientation[3]
         
-        print(str(goal))
+        #print(str(goal))
 
         try:
             self.client = actionlib.SimpleActionClient('/' + self.robotname + '/move_base', MoveBaseAction)
             print("Client started")
             self.client.wait_for_server(rospy.Duration(1))
-        except:
-            print("Could not wait for sever")
-
-        try:
             self.client.send_goal(goal)
         except:
-            print("Could not send goal")
+            print("Could not wait for sever")
 
