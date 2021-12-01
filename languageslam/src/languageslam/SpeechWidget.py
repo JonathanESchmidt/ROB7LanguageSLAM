@@ -191,19 +191,19 @@ class App(QWidget):
 
     @pyqtSlot()
     def MoveLeftClick(self):
-        self.MoveRobotClick("left")
+        self.MoveRobot("left")
 
     @pyqtSlot()
     def MoveRightClick(self):
-        self.MoveRobotClick("right")
+        self.MoveRobot("right")
 
     @pyqtSlot()
     def MoveForwardClick(self):
-        self.MoveRobotClick("forward")
+        self.MoveRobot("forward")
 
     @pyqtSlot()
     def MoveBackwardClick(self):
-        self.MoveRobotClick("backward")
+        self.MoveRobot("backward")
 
     def MoveRobot(self, direction):
         output = "Moving " + direction
