@@ -53,19 +53,19 @@ class App(QWidget):
         self.buttonExplore.setToolTip('Initiate Exploration')
         self.buttonExplore.clicked.connect(self.ExploreRobotClick)
         
-        '''
+        
         self.buttonMoveL = QPushButton('Move Left', self)
-        self.buttonMoveL.clicked.connect(self.MoveRobotClick)
+        self.buttonMoveL.clicked.connect(self.MoveLeftClick)
 
         self.buttonMoveR = QPushButton('Move Right', self)
-        self.buttonMoveR.clicked.connect(self.MoveRobotClick)
+        self.buttonMoveR.clicked.connect(self.MoveRightClick)
 
         self.buttonMoveF = QPushButton('Move Forwards', self)
-        self.buttonMoveF.clicked.connect(self.MoveRobotClick)
+        self.buttonMoveF.clicked.connect(self.MoveForwardClick)
 
         self.buttonMoveB = QPushButton('Move Backwards', self)
-        self.buttonMoveB.clicked.connect(self.MoveRobotClick)
-        '''
+        self.buttonMoveB.clicked.connect(self.MoveBackwardClick)
+        
         
         self.buttonStop = QPushButton('Stop', self)
         self.buttonStop.setToolTip('Stop every movement goal on the robot')
@@ -82,10 +82,10 @@ class App(QWidget):
         layout.addWidget(self.label2, 4, 0)
         layout.addWidget(self.buttonStop, 5, 0)
         layout.addWidget(self.buttonExplore, 5, 1)
-        # layout.addWidget(self.buttonMoveL, 6, 0)
-        # layout.addWidget(self.buttonMoveF, 6, 1)
-        # layout.addWidget(self.buttonMoveB, 6, 2)
-        # layout.addWidget(self.buttonMoveR, 6, 3)
+        layout.addWidget(self.buttonMoveL, 6, 0)
+        layout.addWidget(self.buttonMoveF, 6, 1)
+        layout.addWidget(self.buttonMoveB, 6, 2)
+        layout.addWidget(self.buttonMoveR, 6, 3)
 
         self.show()
 
@@ -190,7 +190,22 @@ class App(QWidget):
             self.label.setText("")
 
     @pyqtSlot()
-    def MoveRobotClick(self, direction):
+    def MoveLeftClick(self):
+        self.MoveRobotClick("left")
+
+    @pyqtSlot()
+    def MoveRightClick(self):
+        self.MoveRobotClick("right")
+
+    @pyqtSlot()
+    def MoveForwardClick(self):
+        self.MoveRobotClick("forward")
+
+    @pyqtSlot()
+    def MoveBackwardClick(self):
+        self.MoveRobotClick("backward")
+
+    def MoveRobot(self, direction):
         output = "Moving " + direction
 
         if self.check_robot7.isChecked():
