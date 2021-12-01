@@ -51,23 +51,25 @@ class App(QWidget):
 
         self.buttonExplore = QPushButton('Explore', self)
         self.button.setToolTip('Initiate Exploration')
-        self.button.clicked.connect(self.ExploreRobotClick())
+        self.button.clicked.connect(self.ExploreRobotClick)
         
+        '''
         self.buttonMoveL = QPushButton('Move Left', self)
-        self.buttonMoveL.clicked.connect(self.MoveRobotClick("left"))
+        self.buttonMoveL.clicked.connect(self.MoveRobotClick)
 
         self.buttonMoveR = QPushButton('Move Right', self)
-        self.buttonMoveR.clicked.connect(self.MoveRobotClick("right"))
+        self.buttonMoveR.clicked.connect(self.MoveRobotClick)
 
         self.buttonMoveF = QPushButton('Move Forwards', self)
-        self.buttonMoveF.clicked.connect(self.MoveRobotClick("forward"))
+        self.buttonMoveF.clicked.connect(self.MoveRobotClick)
 
         self.buttonMoveB = QPushButton('Move Backwards', self)
-        self.buttonMoveB.clicked.connect(self.MoveRobotClick("backward"))
+        self.buttonMoveB.clicked.connect(self.MoveRobotClick)
+        '''
         
         self.buttonStop = QPushButton('Stop', self)
         self.buttonStop.setToolTip('Stop every movement goal on the robot')
-        self.buttonStop.clicked.connect(self.StopRobotClick())
+        self.buttonStop.clicked.connect(self.StopRobotClick)
 
 
 
@@ -187,6 +189,7 @@ class App(QWidget):
             self.label2.setText("No robot selected. Command not sent")
             self.label.setText("")
 
+    @pyqtSlot()
     def MoveRobotClick(self, direction):
         output = "Moving " + direction
 
@@ -200,6 +203,7 @@ class App(QWidget):
 
         self.label.setText(output)
 
+    @pyqtSlot()
     def ExploreRobotClick(self):
         print("Went to exploration")
 
@@ -215,6 +219,7 @@ class App(QWidget):
         output = "Exploring"
         self.label.setText(output)
 
+    @pyqtSlot()
     def StopRobotClick(self):
         if self.check_robot7.isChecked():
             self.robot7.stoprobot()
