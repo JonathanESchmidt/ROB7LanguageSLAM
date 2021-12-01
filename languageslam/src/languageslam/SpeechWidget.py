@@ -37,6 +37,11 @@ class App(QWidget):
         self.commands = [ "stop", "move", "explore", "go"]
         self.movements = ["left", "right", "forward", "backward"]
         self.r = sr.Recognizer()
+        try:
+            self.r.recognize_google()
+        except:
+            pass
+
         self.stemmer = PorterStemmer()
 
         self.button = QPushButton('Record command', self)
@@ -57,6 +62,7 @@ class App(QWidget):
     @pyqtSlot()
     def on_click(self):
         if self.check_robot7.isChecked() or self.check_robot8.isChecked():
+            self.label2.setText("")
             text = ''
             with sr.Microphone() as source:
                 # read the audio data from the default microphone'

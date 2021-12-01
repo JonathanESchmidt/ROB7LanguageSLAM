@@ -50,7 +50,7 @@ class robot_command():
         try:
             self.client = actionlib.SimpleActionClient('/' + self.robotname + '/move_base', MoveBaseAction)
             print("Client started")
-            self.client.wait_for_server(rospy.Duration(10))
+            self.client.wait_for_server(rospy.Duration(1))
         except:
             print("Could not wait for sever")
 
