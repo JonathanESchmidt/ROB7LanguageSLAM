@@ -37,6 +37,7 @@ class App(QWidget):
         self.commands = [ "stop", "move", "explore", "go"]
         self.movements = ["left", "right", "forward", "backward"]
         self.r = sr.Recognizer()
+        
         try:
             self.r.recognize_google()
         except:
@@ -93,11 +94,18 @@ class App(QWidget):
                 self.label.setText("Command not recognised. Please try again.")
 
             else:
-                # TODO add navigation message
                 command = list(command)
                 output = "Command not recognised. Please try again."
+
                 if command[0] == "stop":
+                    if self.check_robot7.isChecked():
+                        self.robot7.stoprobot()
+
+                    if self.check_robot8.isChecked():
+                        self.robot8.stoprobot()
+
                     output = "Command recognised: Stopping"
+
                 elif command[0] == "move":
 
                     try:

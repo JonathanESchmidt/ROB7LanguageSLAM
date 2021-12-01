@@ -55,3 +55,11 @@ class robot_command():
         except:
             print("Could not wait for sever")
 
+    def stoprobot(self):
+        try:
+            self.client = actionlib.SimpleActionClient('/' + self.robotname + '/move_base', MoveBaseAction)
+            print("Client started")
+            self.client.wait_for_server(rospy.Duration(1))
+            self.client.cancel_goal()
+        except:
+            print("Could not stop robot")
