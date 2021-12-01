@@ -50,8 +50,8 @@ class App(QWidget):
         self.button.clicked.connect(self.on_click)
 
         self.buttonExplore = QPushButton('Explore', self)
-        self.button.setToolTip('Initiate Exploration')
-        self.button.clicked.connect(self.ExploreRobotClick)
+        self.buttonExplore.setToolTip('Initiate Exploration')
+        self.buttonExplore.clicked.connect(self.ExploreRobotClick)
         
         '''
         self.buttonMoveL = QPushButton('Move Left', self)
