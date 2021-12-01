@@ -38,9 +38,9 @@
     </include>
     <!-- Run linorobot default lidar filter chain -->
 
-    <!--include file="$(find languageslam)/launch/linorobot/laser_conf_l.launch" >
+    <include file="$(find languageslam)/launch/linorobot/laser_conf_l.launch" >
         <arg name="robot_name"  value="$(arg robot_name)" />
-    </include-->
+    </include>
 
 
 
