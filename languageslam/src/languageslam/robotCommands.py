@@ -22,15 +22,15 @@ class robot_command():
 
 
     def moverobot(self, move):
-        
+        dist=0.5
         if move == 'left':
-            self.sendGoal(0, 1, 1.5708)
+            self.sendGoal(0, dist, 1.5708)
         elif move == 'right':
-            self.sendGoal(0, -1, -1.5708)
+            self.sendGoal(0, -dist, -1.5708)
         elif move == 'forward':
-            self.sendGoal(1, 0, 0)
+            self.sendGoal(dist, 0, 0)
         elif move == 'backward':
-            self.sendGoal(-1, 0, -3.1415)
+            self.sendGoal(-dist, 0, -3.1415)
 
     def sendGoal(self, x, y, theta):
         goal = MoveBaseGoal()
