@@ -49,6 +49,30 @@ class App(QWidget):
         self.button.setToolTip('Record command for selected robots')
         self.button.clicked.connect(self.on_click)
 
+        self.buttonExplore = QPushButton('Explore', self)
+        self.buttonExplore.setToolTip('Initiate Exploration')
+        self.buttonExplore.clicked.connect(self.ExploreRobotClick)
+        
+        
+        self.buttonMoveL = QPushButton('Move Left', self)
+        self.buttonMoveL.clicked.connect(self.MoveLeftClick)
+
+        self.buttonMoveR = QPushButton('Move Right', self)
+        self.buttonMoveR.clicked.connect(self.MoveRightClick)
+
+        self.buttonMoveF = QPushButton('Move Forwards', self)
+        self.buttonMoveF.clicked.connect(self.MoveForwardClick)
+
+        self.buttonMoveB = QPushButton('Move Backwards', self)
+        self.buttonMoveB.clicked.connect(self.MoveBackwardClick)
+        
+        
+        self.buttonStop = QPushButton('Stop', self)
+        self.buttonStop.setToolTip('Stop every movement goal on the robot')
+        self.buttonStop.clicked.connect(self.StopRobotClick)
+
+
+
         layout = QGridLayout(self)
         layout.addWidget(QLabel("Choose robots to control"), 0, 0)
         layout.addWidget(self.check_robot7, 1, 0)
@@ -56,6 +80,12 @@ class App(QWidget):
         layout.addWidget(self.button, 2, 0)
         layout.addWidget(self.label, 3, 0)
         layout.addWidget(self.label2, 4, 0)
+        layout.addWidget(self.buttonStop, 5, 0)
+        layout.addWidget(self.buttonExplore, 5, 1)
+        layout.addWidget(self.buttonMoveL, 6, 0)
+        layout.addWidget(self.buttonMoveF, 6, 1)
+        layout.addWidget(self.buttonMoveB, 6, 2)
+        layout.addWidget(self.buttonMoveR, 6, 3)
 
         self.show()
 
@@ -158,6 +188,61 @@ class App(QWidget):
         else:
             self.label2.setText("No robot selected. Command not sent")
             self.label.setText("")
+
+    @pyqtSlot()
+    def MoveLeftClick(self):
+        self.MoveRobot("left")
+
+    @pyqtSlot()
+    def MoveRightClick(self):
+        self.MoveRobot("right")
+
+    @pyqtSlot()
+    def MoveForwardClick(self):
+        self.MoveRobot("forward")
+
+    @pyqtSlot()
+    def MoveBackwardClick(self):
+        self.MoveRobot("backward")
+
+    def MoveRobot(self, direction):
+        output = "Moving " + direction
+
+        if self.check_robot7.isChecked():
+            self.label2.setText("Sending command to robot 7")
+            self.robot7.moverobot(direction)
+
+        if self.check_robot8.isChecked():
+            self.label2.setText("Sending command to robot 8")
+            self.robot8.moverobot(direction)
+
+        self.label.setText(output)
+
+    @pyqtSlot()
+    def ExploreRobotClick(self):
+        print("Went to exploration")
+
+        if self.check_robot7.isChecked():
+            self.label2.setText("Starting exploration on robot 7")
+            self.robot7.exploration_client(1)
+            print("Exploration 7 going")
+
+        if self.check_robot8.isChecked():
+            self.label2.setText("Starting exploration on robot 8")
+            self.robot8.exploration_client(1)
+            print("Exploration 8 going")
+        output = "Exploring"
+        self.label.setText(output)
+
+    @pyqtSlot()
+    def StopRobotClick(self):
+        if self.check_robot7.isChecked():
+            self.robot7.stoprobot()
+
+        if self.check_robot8.isChecked():
+            self.robot8.stoprobot()
+
+
             
 if __name__ == '__main__':
     
