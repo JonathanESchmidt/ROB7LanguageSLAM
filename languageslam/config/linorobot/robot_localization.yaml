@@ -144,7 +144,7 @@ imu0_linear_acceleration_rejection_threshold: 0.8  #
 imu0_remove_gravitational_acceleration: true
 
 
-use_control: true
+use_control: false
 
 stamped_control: false
 control_timeout: 0.3
