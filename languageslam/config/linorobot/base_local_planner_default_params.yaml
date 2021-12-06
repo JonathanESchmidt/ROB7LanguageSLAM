@@ -21,7 +21,7 @@ DWAPlannerROS:
   sim_time: 3.0
   sim_granularity: 0.1
   angular_sim_granularity: 0.1
-  path_distance_bias: 34.0
+  path_distance_bias: 15.0
   goal_distance_bias: 24.0
   occdist_scale: 0.05
   twirling_scale: 0.0
