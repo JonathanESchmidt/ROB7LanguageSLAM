@@ -22,7 +22,7 @@ class robot:
     def startExplore(self):
         # TODO add explore launchfile
         if not self.explore:
-            self.child = subprocess.Popen(["roslaunch","languageslam","explore_costmap.launch"])
+            self.child = subprocess.Popen(["roslaunch","languageslam","explore.launch"])
             print("parent process")
             print(self.child.poll())
 
